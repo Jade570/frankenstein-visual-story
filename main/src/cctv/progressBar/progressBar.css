@@ -1,0 +1,57 @@
+.progressBar {
+	display:block;
+	width: 90vw;
+	max-width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
+  }
+
+
+  .slider{
+	  height:23px;
+  }
+
+  .slider input{
+	  width:100%;
+	  height: 23px;
+	  background: #eeeeee;
+	  overflow: hidden;
+  }
+
+  .slider input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 25px;
+	border-radius: 0; 
+	border:none;
+	background: #3faeff;
+	box-shadow: -100vw 0 0 100vw dodgerblue;
+	cursor: pointer;
+  }
+  
+  .slider input::-moz-range-thumb {
+	width: 15px;
+	height: 25px;
+	border-radius: 0;
+	border:none;
+	background: #3faeff;
+	box-shadow: -100vw 0 0 100vw dodgerblue;
+	cursor: pointer;
+  }
+
+
+
+  .buttons{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: block;
+	width: 400px;
+  }
+  .buttons button{
+	display:inline-block;
+	width: 50px;
+	padding: 5px;
+	margin-right:5px;
+	border: none;
+  }
