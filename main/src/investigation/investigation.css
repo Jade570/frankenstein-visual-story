@@ -1,0 +1,16 @@
+.Investigation {
+  width: 95vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.Cctv {
+  width: 70%;
+}
+
+.Notes {
+  width: 30%;
+  height: 60%;
+}
