@@ -1,32 +1,61 @@
-import { React, useRef, useState } from "react";
-import Cctv from "./cctv/cctv.js";
+import { React, useState } from "react";
+import * as Scroll from "react-scroll";
+import Investigation from "./investigation/investigation.js";
 import Briefing from "./briefing/briefing.js";
 import Day from "./day/day.js";
+import Result from "./result/result.js";
+
+const Element = Scroll.Element;
 
 const App = () => {
+  //states for show/hide contents
   const [showBriefing, setShowBriefing] = useState(false);
-  const [showCctv, setShowCctv] = useState(false);
+  const [showInvestigation, setShowInvestigation] = useState(false);
+  const [showResult, setShowResult] = useState(false);
 
-  const CctvRef = useRef(null);
-  const BriefingRef = useRef(null);
+  //scroll functions
   const scrollToBriefing = () => {
     setShowBriefing(true);
-    BriefingRef.current.scrollIntoView();
+    Scroll.scroller.scrollTo("Briefing", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
   };
-  const scrollToCctv = () => {
-    setShowCctv(true);
-    CctvRef.current.scrollIntoView();
+
+  const scrollToInvestigation = () => {
+    setShowInvestigation(true);
+    Scroll.scroller.scrollTo("Investigation", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
+  };
+
+  const scrollToResult = () => {
+    setShowResult(true);
+    Scroll.scroller.scrollTo("Result", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
   };
 
   return (
     <div>
       <Day func={scrollToBriefing} />
-      <Briefing
-        ref={BriefingRef}
-        func={scrollToCctv}
-        showBriefing={showBriefing}
-      />
-      <Cctv ref={CctvRef} showCctv={showCctv} />
+      <Element name="Briefing">
+        <Briefing func={scrollToInvestigation} showBriefing={showBriefing} />
+      </Element>
+      <Element name="Investigation">
+        <Investigation
+          func={scrollToResult}
+          showInvestigation={showInvestigation}
+        />
+      </Element>
+      <Element name="Result">
+        <Result showResult={showResult}></Result>
+      </Element>
     </div>
   );
 };
