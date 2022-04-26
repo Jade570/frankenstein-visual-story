@@ -7,7 +7,7 @@ import Result from "./result/result.js";
 
 const Element = Scroll.Element;
 
-const App = () => {
+const Story = () => {
   //states for show/hide contents
   const [showBriefing, setShowBriefing] = useState(false);
   const [showInvestigation, setShowInvestigation] = useState(false);
@@ -60,4 +60,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Story;
