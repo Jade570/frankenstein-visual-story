@@ -1,10 +1,10 @@
-import { React, forwardRef } from "react";
+import { React } from "react";
 import "./briefing.css";
 
-const Briefing = forwardRef((props, ref) => {
+const Briefing = (props) => {
   if (props.showBriefing) {
     return (
-      <div ref={ref} className="briefing">
+      <div className="briefing">
         <div>
           briefing contents blah blah blah lorem ipsum whatever blahblah{" "}
         </div>
@@ -12,8 +12,8 @@ const Briefing = forwardRef((props, ref) => {
       </div>
     );
   } else {
-    return <div ref={ref}></div>;
+    return <div></div>;
   }
-});
+};
 
 export default Briefing;
