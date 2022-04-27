@@ -1,13 +1,18 @@
 import { React, useState } from "react";
 import * as Scroll from "react-scroll";
+import { useParams } from "react-router-dom";
 import Investigation from "./investigation/investigation.js";
 import Briefing from "./briefing/briefing.js";
 import Day from "./day/day.js";
 import Result from "./result/result.js";
+import sample from "./src/sample1.json";
+import NotFound from "../../NotFound";
 
 const Element = Scroll.Element;
 
 const Story = () => {
+  let params = useParams();
+
   //states for show/hide contents
   const [showBriefing, setShowBriefing] = useState(false);
   const [showInvestigation, setShowInvestigation] = useState(false);
@@ -40,24 +45,31 @@ const Story = () => {
       smooth: true,
     });
   };
-
-  return (
-    <div>
-      <Day func={scrollToBriefing} />
-      <Element name="Briefing">
-        <Briefing func={scrollToInvestigation} showBriefing={showBriefing} />
-      </Element>
-      <Element name="Investigation">
-        <Investigation
-          func={scrollToResult}
-          showInvestigation={showInvestigation}
-        />
-      </Element>
-      <Element name="Result">
-        <Result showResult={showResult}></Result>
-      </Element>
-    </div>
-  );
+  if (sample[params.day - 1]) {
+    return (
+      <>
+        <Day func={scrollToBriefing} day={params.day} />
+        <Element name="Briefing">
+          <Briefing
+            func={scrollToInvestigation}
+            showBriefing={showBriefing}
+            json={sample[params.day - 1]}
+          />
+        </Element>
+        <Element name="Investigation">
+          <Investigation
+            func={scrollToResult}
+            showInvestigation={showInvestigation}
+          />
+        </Element>
+        <Element name="Result">
+          <Result showResult={showResult}></Result>
+        </Element>
+      </>
+    );
+  } else {
+    return <NotFound />;
+  }
 };
 
 export default Story;

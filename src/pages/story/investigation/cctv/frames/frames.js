@@ -1,12 +1,12 @@
 import { React } from "react";
 //import "./frames.css";
 
-const image = [
-  require("./rabbit/1.jpg"),
-  require("./rabbit/2.jpg"),
-  require("./rabbit/3.jpg"),
-  require("./rabbit/4.jpg"),
-];
+// const image = [
+//   require("./rabbit/1.jpg"),
+//   require("./rabbit/2.jpg"),
+//   require("./rabbit/3.jpg"),
+//   require("./rabbit/4.jpg"),
+// ];
 
 var ctx = document.createElement("canvas").getContext("2d");
 
@@ -45,7 +45,7 @@ const Frames = (frame) => {
         zIndex: 0,
       }}
     >
-      <img
+      {/* <img
         className="frame"
         src={image[frame.frame % 4]}
         style={{
@@ -66,7 +66,7 @@ const Frames = (frame) => {
           position: "relative",
           top: "-101%",
         }}
-      ></img>
+      ></img> */}
     </div>
   );
 };

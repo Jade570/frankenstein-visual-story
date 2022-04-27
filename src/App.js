@@ -7,7 +7,6 @@ import NotFound from "./NotFound";
 const App = () => {
   return (
     <div className="App">
-      {" "}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />}></Route>
