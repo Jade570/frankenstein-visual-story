@@ -12,6 +12,7 @@ const App = () => {
           <Route path="/" element={<Main />}></Route>
           <Route path="/prologue" element={<FadeInOut />}></Route>
           <Route path="/day/:day" element={<Story />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
