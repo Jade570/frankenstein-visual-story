@@ -9,10 +9,10 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/prologue" element={<FadeInOut />}></Route>
-          <Route path="/day/:day" element={<Story />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route exact path="/" element={<Main />}></Route>
+          <Route exact path="/prologue" element={<FadeInOut />}></Route>
+          <Route exact path="/day/:day" element={<Story />}></Route>
+          <Route exact path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
