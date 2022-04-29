@@ -1,23 +1,19 @@
-import { React, useState } from "react";
+import { React } from "react";
 
 const BriefNote = (props) => {
   if (props.showBriefNote) {
     return (
       <div className="briefNote">
-        <div>장소: {props.json.explanation.place}</div>
-        <div>종류: {props.json.explanation.case}</div>
+        <div>Case Summary: {props.data.description}</div>
+        <div>Scene: {props.data.scene}</div>
+        <div>Type of the crime: {props.data.type}</div>
+        <div>Associated people: {props.data.people}</div>
         <div>
-          {props.json.cctv.map((item, idx) => {
-            const imageURI = require(`${item.thumbnail}`);
-            const name = item.place;
-            return (
-              <div style={{ textAlign: "center" }}>
-                <div>{name}</div>
-                <img src={imageURI} width={200} />
-                <br />
-              </div>
-            );
-          })}
+          <div>CCTV location: {props.data.source.location}</div>
+          <img
+            src={props.data.source.thumbnail}
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          ></img>
         </div>
       </div>
     );
