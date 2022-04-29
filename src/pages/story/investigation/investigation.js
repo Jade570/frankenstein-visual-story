@@ -7,7 +7,10 @@ const Investigation = (props) => {
   if (props.showInvestigation) {
     return (
       <div className="Investigation">
-        <Cctv className="Cctv" data={props.data.cctv} />
+        <div className="Cctv">
+          <Cctv className="Cctv" data={props.data.cctv} />
+        </div>
+
         <Notes className="Notes" data={props.data.notes} />
       </div>
     );

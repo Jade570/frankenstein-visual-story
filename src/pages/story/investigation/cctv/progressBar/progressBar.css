@@ -1,9 +1,8 @@
 .progressBar {
   display: block;
-  width: 63vw;
+  width: 100%;
   max-width: 1080px;
-  margin-right: auto;
-  padding-top: 1%;
+  margin-top: 0.2em;
 }
 
 .slider {
