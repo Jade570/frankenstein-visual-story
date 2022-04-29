@@ -47,7 +47,16 @@ const ProgressBar = ({ frame, setFrame, frameNum }) => {
         />
       </div>
       <div className="buttons">
-        <button onClick={() => setRunning(true)}>Start</button>
+        <button
+          onClick={() => {
+            if (frame === frameNum) {
+              reset();
+            }
+            setRunning(true);
+          }}
+        >
+          Start
+        </button>
         <button onClick={() => setRunning(false)}>Pause</button>
         <button onClick={() => reset()}>Stop</button>
       </div>
