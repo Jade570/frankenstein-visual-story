@@ -1,26 +1,31 @@
 [{
 	"day":1,
 	"briefing":{
-		"explanation":
-			{
-				"place":"장소구 몇몇동",
-				"case":"살인사건"
-			}
-		,
-		"cctv":[{
-			"place":"몇몇3동 근처 골목 cctv",
-			"thumbnail":"./1/1.jpg"
-		},{
-			"place":"몇몇2동 근처 개인 cctv",
-			"thumbnail":"./1/2.jpg"
-		}]			
+		"description":"A white man named Andrew Johnson was killed in a restaurant ‘Plant Meat Heaven’. His body seems like he was assaulted by numerous people before he dies. He had lunch at the restaurant on that day and then he visited the restaurant again at night. Right before he went to the restaurant, there was a truck going into the restaurant, but it was just a distribution truck for the restaurant.",
+		"scene":"A Restuarant ‘Plant Meat Heaven’ / 2051. 7. 7. AM 2:39",
+		"type":"Murder, Assault",
+		"people":["Andrew Johnson / White, Male / 33 / Victim / Customer of the restuarant",
+				  "Robert Davis/ White, Male /  42  / Suspect / An owner of the restaurant"],
+		"source":{
+			"location":"Inside of the restaurant",
+			"thumbnail":"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fbackground.png?alt=media&token=d6c09674-da2d-4004-aff6-aa9d5280cd24"
+		}	
 	},
-	"cctv":[
+	"investigation":
 		{
-			"background":"./1/1.jpg",
-			"components":"./1/1"},
-		{	"background":"./1/2.jpg",
-			"components":"./1/2"}
-	]
+			"frames":7,
+			"source":"../../src/img/Case3"
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"So… the owner of the restaurant killed his customer. But why did he kill him so brutally?",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "In the interview, Robert said he killed Andrew because he said bad things about his food. But I think this doesn’t explain the main purpose of brutal murder.",
+		"sound":null}
+	],
 
+	"final":{
+
+	}
 }]
