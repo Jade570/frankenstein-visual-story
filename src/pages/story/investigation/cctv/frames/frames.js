@@ -1,9 +1,8 @@
 import { React } from "react";
 //import "./frames.css";
 
-var ctx = document.createElement("canvas").getContext("2d");
-
-const Frames = (frame) => {
+const Frames = (props) => {
+  console.log(props.frame);
   return (
     <div
       style={{
@@ -12,22 +11,22 @@ const Frames = (frame) => {
         maxWidth: "1080px",
         maxHeight: "720px",
         marginRight: "auto",
-        border: "3px solid black",
+        border: "3px solid white",
         position: "relative",
         zIndex: 0,
       }}
     >
-      {/* <img
+      <img
         className="frame"
-        src={image[frame.frame % 4]}
+        src={props.data.background}
         style={{
           width: "100%",
           height: "100%",
           zIndex: 1,
         }}
-      ></img> */}
+      ></img>
       <img
-        src={require("./sample1.png")}
+        src={props.data.objects[props.frame]}
         style={{
           width: "100%",
           height: "100%",

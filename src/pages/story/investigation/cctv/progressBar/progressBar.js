@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import "./progressBar.css";
 
-const ProgressBar = ({ frame, setFrame }) => {
+const ProgressBar = ({ frame, setFrame, frameNum }) => {
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   const frameRate = 300;
@@ -12,7 +12,7 @@ const ProgressBar = ({ frame, setFrame }) => {
     setRunning(false);
   };
 
-  if (time === 10) {
+  if (time === frameNum) {
     setRunning(false);
     setTime((prevTime) => prevTime + 1);
   }
@@ -37,7 +37,7 @@ const ProgressBar = ({ frame, setFrame }) => {
         <input
           type="range"
           min={0}
-          max={10}
+          max={frameNum}
           step={1}
           value={time}
           onChange={(e) => {

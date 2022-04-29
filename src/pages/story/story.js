@@ -60,6 +60,7 @@ const Story = () => {
           <Investigation
             func={scrollToResult}
             showInvestigation={showInvestigation}
+            data={sample[params.day - 1].investigation}
           />
         </Element>
         <Element name="Result">
