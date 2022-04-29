@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import "./briefing.css";
 import BriefNote from "./note/note.js";
+import ai from "./ai.gif";
 
 const Briefing = (props) => {
   const noteJson = props.json.briefing;
@@ -15,6 +16,10 @@ const Briefing = (props) => {
   if (props.showBriefing) {
     return (
       <div className="briefing">
+        <img
+          src={ai}
+          style={{ width: "10%", height: "10%", objectFit: "cover" }}
+        ></img>
         <div className="greeting">
           Good day, Ind. investigator! <br />I have briefly analyzed today's
           case for you.
