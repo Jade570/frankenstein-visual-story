@@ -53,7 +53,7 @@ const Story = () => {
           <Briefing
             func={scrollToInvestigation}
             showBriefing={showBriefing}
-            json={sample[params.day - 1]}
+            data={sample[params.day - 1].briefing}
           />
         </Element>
         <Element name="Investigation">
