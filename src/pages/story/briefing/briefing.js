@@ -18,7 +18,7 @@ const Briefing = (props) => {
       <div className="briefing">
         <img
           src={ai}
-          style={{ width: "10%", height: "10%", objectFit: "cover" }}
+          style={{ width: "4em", height: "4em", objectFit: "cover" }}
         ></img>
         <div className="greeting">
           Good day, Ind. investigator! <br />I have briefly analyzed today's
