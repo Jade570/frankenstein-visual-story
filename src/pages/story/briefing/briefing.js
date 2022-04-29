@@ -4,7 +4,7 @@ import BriefNote from "./note/note.js";
 import ai from "./ai.gif";
 
 const Briefing = (props) => {
-  const noteJson = props.json.briefing;
+  const data = props.data;
   const [showBriefNote, setShowBriefNote] = useState(false);
   const buttonFunc = () => {
     if (showBriefNote === false) {
@@ -24,7 +24,7 @@ const Briefing = (props) => {
           Good day, Ind. investigator! <br />I have briefly analyzed today's
           case for you.
         </div>
-        <BriefNote showBriefNote={showBriefNote} json={noteJson} />
+        <BriefNote showBriefNote={showBriefNote} data={data} />
         <button onClick={buttonFunc}>Continue</button>
       </div>
     );
