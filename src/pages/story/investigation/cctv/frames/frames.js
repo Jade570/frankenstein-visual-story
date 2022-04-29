@@ -1,35 +1,7 @@
 import { React } from "react";
 //import "./frames.css";
 
-// const image = [
-//   require("./rabbit/1.jpg"),
-//   require("./rabbit/2.jpg"),
-//   require("./rabbit/3.jpg"),
-//   require("./rabbit/4.jpg"),
-// ];
-
 var ctx = document.createElement("canvas").getContext("2d");
-
-const onclick = (event) => {
-  // Get click coordinates
-  var x = event.pageX - this.offsetLeft,
-    y = event.pageY - this.offsetTop,
-    w = (ctx.canvas.width = this.width),
-    h = (ctx.canvas.height = this.height),
-    alpha;
-
-  // Draw image to canvas
-  // and read Alpha channel value
-  ctx.drawImage(this, 0, 0, w, h);
-  alpha = ctx.getImageData(x, y, 1, 1).data[3]; // [0]R [1]G [2]B [3]A
-
-  // If pixel is transparent,
-  // retrieve the element underneath and trigger it's click event
-  if (alpha === 0) {
-  } else {
-    console.log("LOGO clicked!");
-  }
-};
 
 const Frames = (frame) => {
   return (
@@ -53,7 +25,7 @@ const Frames = (frame) => {
           height: "100%",
           zIndex: 1,
         }}
-      ></img>
+      ></img> */}
       <img
         src={require("./sample1.png")}
         style={{
@@ -66,7 +38,7 @@ const Frames = (frame) => {
           position: "relative",
           top: "-101%",
         }}
-      ></img> */}
+      ></img>
     </div>
   );
 };
