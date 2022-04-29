@@ -10,10 +10,7 @@ const BriefNote = (props) => {
         <div>Associated people: {props.data.people}</div>
         <div>
           <div>CCTV location: {props.data.source.location}</div>
-          <img
-            src={props.data.source.thumbnail}
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-          ></img>
+          <img src={props.data.source.thumbnail}></img>
         </div>
       </div>
     );

@@ -1,14 +1,18 @@
 .day {
-  width: 100vw;
-  height: 100vh;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.padding {
+  height: 30vh;
 }
 
 .day h1 {
-  padding-top: 40%;
   font-size: 5em;
+  text-align: center;
 }
 .day button {
   width: 10em;
@@ -19,4 +23,6 @@
   padding-bottom: 0.3em;
   font-size: 1.5em;
   border: none;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -2,7 +2,7 @@ import { React } from "react";
 //import "./frames.css";
 
 const Frames = (props) => {
-  console.log(props.frame);
+  console.log(props.data.objects[props.frame]);
   return (
     <div
       style={{
