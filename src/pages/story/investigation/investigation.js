@@ -12,6 +12,7 @@ const Investigation = (props) => {
         </div>
 
         <Notes className="Notes" data={props.data.notes} />
+        <button></button>
       </div>
     );
   } else {

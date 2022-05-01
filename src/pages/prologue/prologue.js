@@ -23,6 +23,7 @@ const box_hidden = {
   opacity: "0",
   objectFit: "contatin",
   transition: "opacity 1500ms,visibility 1500ms",
+  display: "none",
 };
 
 const text_active = {
