@@ -1,5 +1,62 @@
 [{
-	"day":1,
+	"day":3,
+	"briefing":{
+		"description":"A black woman named Donna Williams was assaulted and abandoned near backstreets of a suspect’s home. She was bleeding and seemed like she was beaten with a weapon multiple times.",
+		"scene":"Backstreet of Ingolstadt / 2051. 4. 28. PM 11:47 ",
+		"type":"Assault",
+		"people":["Donna Williams / Black, Transgender Female / 28 / Victim"],
+		"source":{
+			"location":"Backstreet of suspect’s home",
+			"thumbnail":"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fbackground.png?alt=media&token=d6c09674-da2d-4004-aff6-aa9d5280cd24"
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":7,
+				"background":"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fbackground.png?alt=media&token=d6c09674-da2d-4004-aff6-aa9d5280cd24",
+				"objects":[
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_1.png?alt=media&token=046f75e7-a949-4b2a-b184-9f1cc15e548b",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_2.png?alt=media&token=a5883411-da2a-4aa7-b96c-177b32cb7b0f",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_3.png?alt=media&token=84c85832-a7e3-40b2-b0b6-15ba7f94935e",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_4.png?alt=media&token=8c670149-53d3-47b9-9ce6-07bd81eee5c2",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_5.png?alt=media&token=964f0461-1059-4652-8b34-1d71d0e9fd4a",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_6.png?alt=media&token=4a630e8d-41f8-4340-9e77-537f0180e652",
+				"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fob_7.png?alt=media&token=a69310fc-998f-4573-8268-a5a79bfc1fd3"	
+				],
+				"suggestions":[
+					[
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_1-1.png?alt=media&token=ba602f4b-58a5-4eb2-b053-a9f972bcb792",
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_1-2.png?alt=media&token=bcc8a9e0-09ff-4bc0-90e2-fcc3ce868d97",
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_1-3.png?alt=media&token=4c6c891a-a385-4d69-8021-a49d5b1e9341"
+					],
+					[
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_2-1.png?alt=media&token=aa0f56d9-682a-44fa-8678-1318cbf6588b",
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_2-2.png?alt=media&token=fe0b8417-395a-4109-928e-a960a6f7b0bc",
+					"https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/case3%2Fsj_2-3.png?alt=media&token=cc3078cd-f236-4fa5-8b76-e3f056adb279"	
+					]
+				]},
+			"notes":[
+			"A person who dragged the victim = white man",
+			"Mark on the victim’s face = Hives"	
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"We cannot be obvious of someone’s gender by their looks. That means, the suspect was actually a white man regardless of his long hair.",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "I understood, investigator. I will apply that in later analysis.",
+		"sound":null}
+	],
+
+	"final":{
+
+	}
+},
+	
+	{
+	"day":3,
 	"briefing":{
 		"description":"A white man named Andrew Johnson was killed in a restaurant ‘Plant Meat Heaven’. His body seems like he was assaulted by numerous people before he dies. He had lunch at the restaurant on that day and then he visited the restaurant again at night. Right before he went to the restaurant, there was a truck going into the restaurant, but it was just a distribution truck for the restaurant.",
 		"scene":"A Restuarant ‘Plant Meat Heaven’ / 2051. 7. 7. AM 2:39",
