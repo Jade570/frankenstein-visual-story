@@ -41,18 +41,18 @@ const Story = (props) => {
       list.items.sort();
       list.items.forEach(async (item) => {
         const imageURL = await getDownloadURL(item);
-        console.log(imageURL.substring(92));
+        //console.log(imageURL.substring(92));
         if (
           imageURL.includes("background.png") ||
           imageURL.includes("Background.png")
         ) {
           setBackground(imageURL);
         } else if (imageURL.includes("ob_")) {
-          setObjectImage([...objectImage, imageURL]);
+          setObjectImage((objectImage) => [...objectImage, imageURL]);
         } else if (imageURL.includes("sj_1")) {
-          setSubject1([...subject1, imageURL]);
+          setSubject1((subject1) => [...subject1, imageURL]);
         } else if (imageURL.includes("sj_2")) {
-          setSubject2([...subject2, imageURL]);
+          setSubject2((subject2) => [...subject2, imageURL]);
         }
         const image = document.createElement("img");
         image.src = imageURL;
@@ -128,6 +128,8 @@ const Story = (props) => {
                 day={params}
                 background={background}
                 object={objectImage}
+                subject1={subject1}
+                subject2={subject2}
               />
             </Element>
             <Element name="Result">
