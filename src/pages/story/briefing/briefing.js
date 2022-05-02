@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./briefing.css";
 import BriefNote from "./note/note.js";
 import ai from "./ai.gif";
@@ -17,9 +17,12 @@ const Briefing = (props) => {
 
   const path = ["image/case", props.day, "/", "Background.png"].join("");
   const imageRef = ref(props.storage, path);
-  const imageUrl = getDownloadURL(imageRef).then((url) => {
-    return url;
-  });
+  const [briefNoteImage, setBriefNoteImage] = useState("");
+  useEffect(() => {
+    getDownloadURL(imageRef).then((url) => {
+      setBriefNoteImage(url);
+    });
+  }, []);
 
   if (props.showBriefing) {
     return (
@@ -32,7 +35,11 @@ const Briefing = (props) => {
           Good day, Ind. investigator! <br />I have briefly analyzed today's
           case for you.
         </div>
-        <BriefNote showBriefNote={showBriefNote} data={data} image={imageUrl} />
+        <BriefNote
+          showBriefNote={showBriefNote}
+          data={data}
+          image={briefNoteImage}
+        />
         <button onClick={buttonFunc}>Continue</button>
       </div>
     );

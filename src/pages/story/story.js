@@ -20,10 +20,19 @@ const Story = (props) => {
   const [showResult, setShowResult] = useState(false);
   const imageUrl = [];
 
+  //variables for firebase storage sdk
   const path = ["image/case", params.day, "/"].join("");
   const dayRef = ref(props.storage, path);
   const [pendingImages, setPendingImages] = useState(-1);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  //image lists
+  const [background, setBackground] = useState("");
+  const [objectImage, setObjectImage] = useState([]);
+  const [subject1, setSubject1] = useState([]);
+  const [subject2, setSubject2] = useState([]);
+
+  //load image and save urls
   const loadImages = async () => {
     try {
       let list = await listAll(dayRef);
@@ -32,15 +41,25 @@ const Story = (props) => {
       list.items.sort();
       list.items.forEach(async (item) => {
         const imageURL = await getDownloadURL(item);
+        if (
+          imageURL.includes("background.png") ||
+          imageURL.includes("Background.png")
+        ) {
+          setBackground(imageURL);
+        } else if (imageURL.includes("ob_")) {
+          setObjectImage([...objectImage, imageURL]);
+        } else if (imageURL.includes("sj_1")) {
+          setSubject1([...subject1, imageURL]);
+        } else if (imageURL.includes("sj_2")) {
+          setSubject2([...subject2, imageURL]);
+        }
         const image = document.createElement("img");
         image.src = imageURL;
         imageUrl.push(imageURL);
-
         image.onload = () => {
           setPendingImages((cnt) => cnt - 1);
         };
       });
-      console.log(imageUrl);
     } catch (e) {
       console.log("error");
     }
@@ -86,29 +105,36 @@ const Story = (props) => {
 
   if (sample[params.day - 1]) {
     return (
-      <>
-        <Day func={scrollToBriefing} day={params.day} />
-        <Element name="Briefing">
-          <Briefing
-            func={scrollToInvestigation}
-            showBriefing={showBriefing}
-            day={params.day}
-            data={sample[params.day - 1].briefing}
-            storage={props.storage}
-          />
-        </Element>
-        <Element name="Investigation">
-          <Investigation
-            func={scrollToResult}
-            showInvestigation={showInvestigation}
-            data={sample[params.day - 1].investigation}
-            day={params}
-          />
-        </Element>
-        <Element name="Result">
-          <Result showResult={showResult}></Result>
-        </Element>
-      </>
+      <div>
+        {!isLoaded && <div>Loading</div>}
+        {isLoaded && (
+          <div>
+            <Day func={scrollToBriefing} day={params.day} />
+            <Element name="Briefing">
+              <Briefing
+                func={scrollToInvestigation}
+                showBriefing={showBriefing}
+                day={params.day}
+                data={sample[params.day - 1].briefing}
+                storage={props.storage}
+              />
+            </Element>
+            <Element name="Investigation">
+              <Investigation
+                func={scrollToResult}
+                showInvestigation={showInvestigation}
+                data={sample[params.day - 1].investigation}
+                day={params}
+                background={background}
+                object={objectImage}
+              />
+            </Element>
+            <Element name="Result">
+              <Result showResult={showResult}></Result>
+            </Element>
+          </div>
+        )}
+      </div>
     );
   } else {
     return <NotFound />;

@@ -7,7 +7,12 @@ const Cctv = (props) => {
 
   return (
     <div>
-      <Frames frame={frame} data={props.data} />
+      <Frames
+        frame={frame}
+        data={props.data}
+        background={props.background}
+        object={props.object}
+      />
       <ProgressBar
         frame={frame}
         setFrame={setFrame}

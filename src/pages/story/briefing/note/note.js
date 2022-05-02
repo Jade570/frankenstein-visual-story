@@ -10,7 +10,7 @@ const BriefNote = (props) => {
         <div>Associated people: {props.data.people}</div>
         <div>
           <div>CCTV location: {props.data.source.location}</div>
-          <img src={props.imageUrl}></img>
+          <img src={props.image}></img>
         </div>
       </div>
     );

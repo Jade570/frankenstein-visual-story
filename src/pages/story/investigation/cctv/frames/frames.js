@@ -5,8 +5,8 @@ const Frames = (props) => {
   console.log(props.data.objects[props.frame]);
   return (
     <div className="container">
-      <img className="background" src={props.data.background}></img>
-      <img className="objects" src={props.data.objects[props.frame]}></img>
+      <img className="background" src={props.background}></img>
+      <img className="objects" src={props.object[props.frame]}></img>
     </div>
   );
 };

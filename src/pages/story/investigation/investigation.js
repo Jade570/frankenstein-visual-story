@@ -4,11 +4,17 @@ import Notes from "./notes/notes.js";
 import "./investigation.css";
 
 const Investigation = (props) => {
+  console.log(props.object);
   if (props.showInvestigation) {
     return (
       <div className="Investigation">
         <div className="Cctv">
-          <Cctv className="Cctv" data={props.data.cctv} />
+          <Cctv
+            className="Cctv"
+            data={props.data.cctv}
+            background={props.background}
+            object={props.object}
+          />
         </div>
 
         <Notes className="Notes" data={props.data.notes} />

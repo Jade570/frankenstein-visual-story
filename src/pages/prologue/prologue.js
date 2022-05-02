@@ -86,6 +86,7 @@ const FadeInOut = (props) => {
   return (
     <div>
       <div style={isLoaded ? mask_hidden : mask_active}></div>
+      {!isLoaded && <div>Loading</div>}
       {isLoaded && (
         <div className="section1" style={{ cursor: "pointer" }}>
           <Fade ref={slideRef} duration={500} arrows={false} autoplay={false}>
