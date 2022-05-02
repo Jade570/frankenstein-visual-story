@@ -41,6 +41,7 @@ const Story = (props) => {
       list.items.sort();
       list.items.forEach(async (item) => {
         const imageURL = await getDownloadURL(item);
+        console.log(imageURL.substring(92));
         if (
           imageURL.includes("background.png") ||
           imageURL.includes("Background.png")

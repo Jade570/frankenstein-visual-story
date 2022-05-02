@@ -4,7 +4,6 @@ import Notes from "./notes/notes.js";
 import "./investigation.css";
 
 const Investigation = (props) => {
-  console.log(props.object);
   if (props.showInvestigation) {
     return (
       <div className="Investigation">
