@@ -18,12 +18,14 @@ const Story = (props) => {
   const [showBriefing, setShowBriefing] = useState(false);
   const [showInvestigation, setShowInvestigation] = useState(false);
   const [showResult, setShowResult] = useState(false);
-  const imageUrl = [];
 
   //variables for firebase storage sdk
-  const path = ["image/case", params.day, "/"].join("");
-  const dayRef = ref(props.storage, path);
+  const imagePath = ["image/case", params.day, "/"].join("");
+  const imgRef = ref(props.storage, imagePath);
   const [pendingImages, setPendingImages] = useState(-1);
+  const voicePath = ["voice/case", params.day, "/"].join("");
+  const voiceRef = ref(props.storage, voicePath);
+  const [pendingVoice, setPendingVoice] = useState(-1);
   const [isLoaded, setIsLoaded] = useState(false);
 
   //image lists
@@ -32,16 +34,21 @@ const Story = (props) => {
   const [subject1, setSubject1] = useState([]);
   const [subject2, setSubject2] = useState([]);
 
+  //voice lists
+  const [start, setStart] = useState("");
+  const [brief, setBrief] = useState("");
+  const [clue, setClue] = useState([]);
+  const [conclusion, setConclusion] = useState([]);
+
   //load image and save urls
   const loadImages = async () => {
     try {
-      let list = await listAll(dayRef);
+      let list = await listAll(imgRef);
       setPendingImages(list.items.length);
 
       list.items.sort();
       list.items.forEach(async (item) => {
         const imageURL = await getDownloadURL(item);
-        //console.log(imageURL.substring(92));
         if (
           imageURL.includes("background.png") ||
           imageURL.includes("Background.png")
@@ -56,9 +63,57 @@ const Story = (props) => {
         }
         const image = document.createElement("img");
         image.src = imageURL;
-        imageUrl.push(imageURL);
         image.onload = () => {
           setPendingImages((cnt) => cnt - 1);
+        };
+      });
+    } catch (e) {
+      console.log("error");
+    }
+  };
+
+  //load voice and save urls
+  const loadVoice = async () => {
+    try {
+      // 처음 디렉토리 안의 아이템 나열
+      let list = await listAll(voiceRef);
+      setPendingVoice(list.items.length);
+
+      // 세부 디렉토리 안의 아이템 나열
+      list.prefixes.forEach(async (folderRef) => {
+        let folder = await listAll(folderRef);
+        setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
+        folder.items.forEach(async (item) => {
+          const url = await getDownloadURL(item);
+          console.log(pendingVoice);
+          console.log(url.substring(92));
+          const voice = document.createElement("audio");
+          voice.src = url;
+          if (url.includes("clue")) {
+            setClue((clue) => [...clue, url]);
+          } else if (url.includes("conclusion")) {
+            setConclusion((conclusion) => [...conclusion, url]);
+          }
+          voice.onload = () => {
+            setPendingVoice((cnt) => cnt - 1);
+          };
+        });
+      });
+
+      list.items.forEach(async (item) => {
+        const url = await getDownloadURL(item);
+        const voice = document.createElement("audio");
+        voice.src = url;
+        console.log("pendingVoice:", pendingVoice);
+        console.log(url.substring(92));
+        if (url.includes("brief.mp3")) {
+          setBrief(url);
+        } else if (url.includes("start.mp3")) {
+          setStart(url);
+        }
+        setBrief(url);
+        voice.onload = () => {
+          setPendingVoice((cnt) => cnt - 1);
         };
       });
     } catch (e) {
@@ -96,13 +151,15 @@ const Story = (props) => {
 
   useEffect(() => {
     loadImages();
+    loadVoice();
   }, []);
 
   useEffect(() => {
-    if (pendingImages === 0) {
+    if (pendingImages === 0 && pendingVoice === 0) {
       setIsLoaded(true);
+      console.log(clue);
     }
-  }, [pendingImages]);
+  }, [pendingImages, pendingVoice]);
 
   if (sample[params.day - 1]) {
     return (
