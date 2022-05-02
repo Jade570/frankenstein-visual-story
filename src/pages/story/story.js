@@ -26,7 +26,8 @@ const Story = (props) => {
   const voicePath = ["voice/case", params.day, "/"].join("");
   const voiceRef = ref(props.storage, voicePath);
   const [pendingVoice, setPendingVoice] = useState(-1);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isVoiceLoaded, setIsVoiceLoaded] = useState(false);
 
   //image lists
   const [background, setBackground] = useState("");
@@ -78,12 +79,10 @@ const Story = (props) => {
       // 처음 디렉토리 안의 아이템 나열
       let list = await listAll(voiceRef);
       setPendingVoice(list.items.length);
-      console.log("pendingVoice:", pendingVoice);
       // 세부 디렉토리 안의 아이템 나열
       list.prefixes.forEach(async (folderRef) => {
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
-        console.log("pendingVoice:", pendingVoice);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
           const voice = document.createElement("audio");
@@ -93,7 +92,7 @@ const Story = (props) => {
           } else if (url.includes("conclusion")) {
             setConclusion((conclusion) => [...conclusion, url]);
           }
-          voice.onload = () => {
+          voice.onloadstart = () => {
             setPendingVoice((cnt) => cnt - 1);
           };
         });
@@ -103,14 +102,13 @@ const Story = (props) => {
         const url = await getDownloadURL(item);
         const voice = document.createElement("audio");
         voice.src = url;
-        console.log("pendingVoice:", pendingVoice);
         if (url.includes("brief.mp3")) {
           setBrief(url);
         } else if (url.includes("start.mp3")) {
           setStart(url);
         }
         setBrief(url);
-        voice.onload = () => {
+        voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
         };
       });
@@ -154,15 +152,21 @@ const Story = (props) => {
 
   useEffect(() => {
     if (pendingImages === 0) {
-      setIsLoaded(true);
+      setIsImageLoaded(true);
     }
-  }, [pendingImages]);
+  }, [loadImages]);
+
+  useEffect(() => {
+    if (pendingVoice === 0) {
+      setIsVoiceLoaded(true);
+    }
+  }, [pendingVoice]);
 
   if (sample[params.day - 1]) {
     return (
       <div>
-        {!isLoaded && <div>Loading</div>}
-        {isLoaded && (
+        {!(isImageLoaded && isVoiceLoaded) && <div>Loading</div>}
+        {isImageLoaded && isVoiceLoaded && (
           <div>
             <Day func={scrollToBriefing} day={params.day} />
             <Element name="Briefing">

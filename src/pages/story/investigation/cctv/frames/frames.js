@@ -11,6 +11,7 @@ const Frames = (props) => {
     <div className="container">
       <img className="background" src={props.background}></img>
       <img className="objects" src={object[props.frame]}></img>
+      <div className="subject"></div>
     </div>
   );
 };
