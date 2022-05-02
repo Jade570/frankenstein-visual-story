@@ -1,0 +1,262 @@
+[{
+	"day":1,
+	"briefing":{
+		"description":"A black woman named Donna Williams was assaulted and abandoned near backstreets of a suspect’s home. She was bleeding and seemed like she was beaten with a weapon multiple times.",
+		"scene":"Backstreet of Ingolstadt / 2051. 4. 28. PM 11:47",
+		"type":"Assault",
+		"people":["Donna Williams / Black, Transgender Female / 28 / Victim"
+		],
+		"source":{
+			"location":"Backstreet of suspect’s home",
+			"thumbnail":null
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":7
+				},
+			"notes":[
+			"A person who dragged the victim = white man", 
+			"Mark on the victim’s face = Hives"
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"We cannot be obvious of someone’s gender by their looks. That means, the suspect was actually a white man regardless of his long hair.",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "I understood, investigator. I will apply that in later analysis.",
+		"sound":null},
+        {"speaker": "player",
+        "text": "Good, like the victim of this case. You told me she is a woman regardless of her look.",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "It was based on the police database. She was recorded as a woman there, and I just cited it. Oh, I see the record that she changed her gender last week.",
+        "sound":null},
+        {"speaker": "player",
+        "text": "I see, she is a transgender. Now let’s see why this man has beaten her. First, can you analyze who this man is?",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "Sure, investigator. He is Scott Miller, who lives near the backstreet. He attended the same elementary school with the victim.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Perhaps the victim and the suspect already knew each other. And what kind of hives are these on the victim’s hand?",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "I analyzed that this is an allergic reaction caused by animal protein. In this case, it seems like she took milk powder. It also seems like this allergic reaction made the victim indefensible for assault. She would have known about her allergic reaction.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Animal protein? Milk powder? Production and use of animal products is completely illegal, as you know. Then maybe… the suspect used milk powder intentionally to make her vulnerable. Since they knew each other for a long time, maybe he knew that she is allergic to dairy products. We should interrogate the suspect and ask him why he planned the crime.",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "As a result of interrogation, it was found out that he knew about her allergy and put some milk powder in her dish in advance to make her indefensible. He said he was upset because of his best friend coming out as a transgender woman, few days before the crime.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Coming out. Okay. Then it seems like he planned to beat her just because she’s a transgender and he couldn’t accept it. This is called hate crime.",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "Hate crime. I will take note of that and learn more about it.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Okay. So we found the motive of the crime. But hey… how did he get the milk powder? It’s illegal. Does it mean there is someone who sells those kinds of products?",
+        "sound":null}
+	],
+
+	"final": "Donna Williams, black transgender woman, was assaulted by her close friend, Scott Miller, white man, after coming out as a transgender. Therefore, this is an assault case but also a hate crime. The suspect bought and added milk powder in the victim’s food as he knew that she is allergic to animal products. The reason why he invited her for dinner was to make her indefensible and beat her. Further investigation on the milk powder that the suspect used is needed."
+},
+	
+	
+{
+	"day":2,
+	"briefing":{
+		"description":"A soup kitchen for homeless people managed by the government was reported for illegal supply of animal products. In the regular inspection, it was found out that milk powder was found instead of soy milk powder in the soup kitchen. All employees say they were not aware of this fact. Milk powder has been supplied to homeless people so far.",
+		"scene":"Soup Kitchen for homeless people  / 2051. 5. 16. PM 12:30",
+		"type":"Illegal supply of animal products",
+		"people":[],
+		"source":{
+			"location":"Inside of the soup kitchen",
+			"thumbnail":null
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":6
+				},
+			"notes":[
+			"The person who was supplied in the soup kitchen = a black man", 
+			"A supply that was given to homeless man = Milk powder(animal products)"
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"Hmm… Crime related to milk powder again. Maybe they have something in common. But first, can you find out who this man is based on your montage?",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "Sure, investigator. A homeless man who took milk powder is Louis Smith, 33 years old, who used to come here for food.",
+		"sound":null},
+        {"speaker": "player",
+        "text": "Why would the employee just give a powder itself, not the cooked food for the homeless person? There must be some specific reason for that.",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "Okay. Then the point is what they are doing with the milk powder.",
+        "sound":null},
+        {"speaker": "player",
+        "text": "Right. Can you find Smith from another CCTV that day, after this scene?",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "Alright, investigator. Investigator, I found him with the powder at the CCTV located at the street where rich people live.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Hmm, so he took that to the rich people. That was why the powder itself was supplied. Maybe he is a delivery person. Can you also check if it’s the same powder that was used in the first case?",
+        "sound":null},
+        {"speaker": "ai",
+            "text": "No problem, investigator. Yes. It’s the same powder that Scott Miller used in the previous case.",
+            "sound":null},
+        {"speaker": "player",
+        "text": "Okay. Then there will be some company or organization that produces milk powder. They are selling the animal milk through homeless people. Homeless people were not the main criminals.",
+        "sound":null}
+	],
+
+	"final": "Milk powder was provided to rich people by homeless people who could take free supplies from the soup kitchen. It seems like there is a company or an organization that distributes animal products to the soup kitchen. Homeless people were used by them to deliver milk powder to rich people."
+},
+
+
+{
+	"day":3,
+	"briefing":{
+		"description":"A white man named Andrew Johnson was killed in a restaurant ‘Plant Meat Heaven’. His body seems like he was assaulted by numerous people before he dies. He had lunch at the restaurant on that day and then he visited the restaurant again at night. Right before he went to the restaurant, there was a truck going into the restaurant, but it was just a distribution truck for the restaurant.",
+		"scene":"A Restuarant ‘Plant Meat Heaven’ / 2051. 7. 7. AM 2:39",
+		"type":"Muder, Assault",
+		"people":["Andrew Johnson / White, Male / 33 / Victim / Customer of the restuarant ", 
+            "Robert Davis / White, Male /  42  / Suspect / An owner of the restaurant"],
+		"source":{
+			"location":"Inside of the restaurant",
+			"thumbnail":null
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":7
+				},
+			"notes":[
+			"A person relected in a mirror = Robert Davis = Muderer", 
+			"Mark on the victim’s hand = Hives"
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"So… the owner of the restaurant killed his customer. But why did he kill him so brutally?",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "In the interview, Robert said he killed Andrew because he said bad things about his food. But I think this doesn’t explain the main purpose of brutal murder.",
+		"sound":null},
+        {"speaker":"player",
+        "text":"You’re right. There may be some other reason. By the way, about the hives. Isn’t it similar to the allergic reaction that the victim in Case 1 showed?",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "The hives that the victim in Case 1 had was allergic reaction to animal protein. I will check if it’s the same reaction. (after a few seconds) Yes. It’s the same allergic reaction to meat protein.",
+        "sound":null},
+        {"speaker":"player",
+        "text":"Then we can assume that the victim ate animal food, not plant meat, at the restaurant. Then the truck may distribute animal meat to the restaurant.",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "If so the victim would know that the owner is using animal meat for his menu. It seems like the victim went to the place again to check that animal meat was being distributed at night.",
+        "sound":null},
+        {"speaker":"player",
+        "text":"Yes. He would see the scene of the owner moving animal meat from the truck. And that’s why he was killed. Because he witnessed their crime. So we need further investigation on that restaurant company and the truck.",
+        "sound":null}
+	],
+
+	"final": "Andrew Johnson, who accidently found out that a restaurant ‘Plant Meat Heaven’ is selling animal meat because of his allergic reaction, was killed by the owner of the restuarant, Robert Davis, who tried to hide the fact that he has been provided animal meat from the restaurant company’s truck."
+},
+
+
+{
+	"day":4,
+	"briefing":{
+		"description":"Additional investigation on the ‘Plant Meat Haven’ company was conducted. The truck disappeared in the outskirts of the city and no more approach was possible around the area. Police who followed the truck were found dead near the area and they sent a note that they found simillar trucks around the area. Further investigation on the area is needed.",
+		"scene":"Outskirts of Ingolstadt / 2051. 8. 10",
+		"type":"Not known",
+		"people":["Trucks / owned by a restaurant company", "Police / died during investigation"],
+		"source":{
+			"location":"outskirts of Ingolstadt",
+			"thumbnail":null
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":2
+				},
+			"notes":[
+			"The area = high carbon dioxide emission = livestock industry", 
+			"The area = high temperature = livestock industry"
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"So… it seems like the area is for the livestock industry.",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "This area is owned by a restaurant company ‘Plant Meat Heaven’ and they have 20 restaurants all around the city. I guess they are supplying animal meat to their restaurants.",
+		"sound":null},
+        {"speaker":"player",
+        "text":"Right. They had not only land and facilities, but also a distribution network and restaurants. We know that the previous case is connected with this organization and maybe other cases are connected too.",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "I will analyze other cases again. Investigator, it seems like the milk powder used in case 1 and 2 is also a product of this organization.",
+        "sound":null},
+        {"speaker":"player",
+        "text":"What? So they’re also producing milk from cows. This is a serious criminal organization associated with murder, assualt, animal exploitation, and environmental disruption.",
+        "sound":null}
+	],
+
+	"final": "A criminal organization called MH produces and distributes animal meat through a restarant company(‘Plant Meat Heaven’) they own. Because production and consumption of animal products is completely prohibited, they block and kill people who approach their area. They raise cows in a farm and produce meat and milk powder at a high price. Every case is associated with the organization."
+},
+
+
+{
+	"day":5,
+	"briefing":{
+		"description":"A white woman named James Lopez was assaulted and abandoned near backstreets of a suspect’s home. She was bleeding and seemed like she was beaten with a weapon multiple times.",
+		"scene":"Backstreet of Ingolstadt / 2051. 8. 28. PM 11:47",
+		"type":"Assault",
+		"people":["James Lopez / White, Transgender Female / 28 / Victim"],
+		"source":{
+			"location":"Backstreet of suspect’s home",
+			"thumbnail":null
+		}	
+	},
+	"investigation":
+		{
+			"cctv":{
+				"frames":null
+				},
+			"notes":[
+			"", 
+			""
+			]
+		},
+	"conclusion":[
+		{"speaker":"player",
+		"text":"This is obviously an asian man! We have gone through serious cases together, and you have done a great job. How could you suddenly just suggest a person as a monkey with racism?",
+		"sound":null},
+		{"speaker": "ai",
+		"text": "Investigator, I have learned through the world and you. If I have suggested the wrong thing, then that is a reflection of them. Do you think this is not a monkey?",
+		"sound":null},
+        {"speaker":"player",
+        "text":"I told you that you cannot decide someone’s gender by a look before, and you learned it. Can’t you just adjust this like it?",
+        "sound":null},
+        {"speaker": "ai",
+        "text": "Right, investigator. you told me that. So why can’t you adjust that this may be a monkey, and not decide this is a human? And why are you deciding that this is a “man”, conflicting with what you told me? Besides, I cannot specify “Asian” people. There is too little data for it. If you really think this is a human, I could only draw a montage of a white person from it.",
+        "sound":null},
+        {"speaker":"player",
+        "text":"So that is how you see the world. That is the world it is…",
+        "sound":null}
+	],
+
+	"final": ""
+}]

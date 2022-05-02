@@ -5,7 +5,7 @@ import Investigation from "./investigation/investigation.js";
 import Briefing from "./briefing/briefing.js";
 import Day from "./day/day.js";
 import Result from "./result/result.js";
-import sample from "./src/sample1.json";
+import sample from "./src/script.json";
 import NotFound from "../../NotFound";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
