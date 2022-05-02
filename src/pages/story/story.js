@@ -153,10 +153,10 @@ const Story = (props) => {
   }, []);
 
   useEffect(() => {
-    if (pendingImages === 0 && pendingVoice) {
+    if (pendingImages === 0) {
       setIsLoaded(true);
     }
-  }, [pendingImages, pendingVoice]);
+  }, [pendingImages]);
 
   if (sample[params.day - 1]) {
     return (
@@ -171,7 +171,7 @@ const Story = (props) => {
                 showBriefing={showBriefing}
                 day={params.day}
                 data={sample[params.day - 1].briefing}
-                storage={props.storage}
+                image={background}
               />
             </Element>
             <Element name="Investigation">

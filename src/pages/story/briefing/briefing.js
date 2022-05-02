@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import "./briefing.css";
 import BriefNote from "./note/note.js";
 import ai from "./ai.gif";
-import { ref, listAll, getDownloadURL, list } from "firebase/storage";
 
 const Briefing = (props) => {
   const data = props.data;
@@ -14,15 +13,6 @@ const Briefing = (props) => {
       props.func();
     }
   };
-
-  const path = ["image/case", props.day, "/", "Background.png"].join("");
-  const imageRef = ref(props.storage, path);
-  const [briefNoteImage, setBriefNoteImage] = useState("");
-  useEffect(() => {
-    getDownloadURL(imageRef).then((url) => {
-      setBriefNoteImage(url);
-    });
-  }, []);
 
   if (props.showBriefing) {
     return (
@@ -38,7 +28,7 @@ const Briefing = (props) => {
         <BriefNote
           showBriefNote={showBriefNote}
           data={data}
-          image={briefNoteImage}
+          image={props.image}
         />
         <button onClick={buttonFunc}>Continue</button>
       </div>
