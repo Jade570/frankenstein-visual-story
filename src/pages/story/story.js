@@ -78,15 +78,14 @@ const Story = (props) => {
       // 처음 디렉토리 안의 아이템 나열
       let list = await listAll(voiceRef);
       setPendingVoice(list.items.length);
-
+      console.log("pendingVoice:", pendingVoice);
       // 세부 디렉토리 안의 아이템 나열
       list.prefixes.forEach(async (folderRef) => {
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
+        console.log("pendingVoice:", pendingVoice);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
-          console.log(pendingVoice);
-          console.log(url.substring(92));
           const voice = document.createElement("audio");
           voice.src = url;
           if (url.includes("clue")) {
@@ -105,7 +104,6 @@ const Story = (props) => {
         const voice = document.createElement("audio");
         voice.src = url;
         console.log("pendingVoice:", pendingVoice);
-        console.log(url.substring(92));
         if (url.includes("brief.mp3")) {
           setBrief(url);
         } else if (url.includes("start.mp3")) {
@@ -155,9 +153,8 @@ const Story = (props) => {
   }, []);
 
   useEffect(() => {
-    if (pendingImages === 0 && pendingVoice === 0) {
+    if (pendingImages === 0 && pendingVoice) {
       setIsLoaded(true);
-      console.log(clue);
     }
   }, [pendingImages, pendingVoice]);
 
