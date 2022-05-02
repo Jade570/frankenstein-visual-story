@@ -32,7 +32,6 @@ const App = () => {
             element={<FadeInOut storage={storage} />}
           ></Route>
           <Route exact path="/day/:day" element={<Story />}></Route>
-          <Route path="/test" element={<div>test</div>}></Route>
           <Route exact path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
