@@ -140,6 +140,7 @@ const Story = (props) => {
     loadVoice();
   }, []);
 
+  //load Image
   useEffect(() => {
     if (pendingImages === 0) {
       setIsImageLoaded(true);
@@ -162,6 +163,7 @@ const Story = (props) => {
     }
   }, [loadImages]);
 
+  //load Voice
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
@@ -171,7 +173,6 @@ const Story = (props) => {
   useEffect(() => {
     if (clueState > -1) {
       playClue(clueState);
-      console.log("useEffect working, ", clueState);
     }
   }, [clueState]);
 
@@ -256,7 +257,9 @@ const Story = (props) => {
       prevCluePlaying.forEach((item) => {
         item = false;
       });
+      console.log("should be [false,false]: ", prevCluePlaying);
       prevCluePlaying[idx] = true;
+      console.log("idx: ", idx);
       console.log("prevcluePlaying: ", prevCluePlaying);
       return [...prevCluePlaying];
     });
