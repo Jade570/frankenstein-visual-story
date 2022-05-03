@@ -16,10 +16,15 @@
 			"cctv":{
 				"frames":7
 				},
-			"notes":[
-			"A person who dragged the victim = white man", 
-			"Mark on the victim’s face = Hives"
-			]
+			"notes":[["A person who dragged the victim = white woman",
+				 "A person who dragged the victim = plastic bag", 
+				 "A person who dragged the victim = white man"],
+				 ["Mark on the victim’s face = Wound",
+					"Mark on the victim’s face = Hives",
+					"Mark on the victim’s face = A pimple"]
+			],
+			"accuracy":[[77,40,38],[67,55,30]],
+			"answer": [3,2]
 		},
 	"conclusion":[
 		{"speaker":"player",
