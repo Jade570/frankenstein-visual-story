@@ -258,15 +258,13 @@ const Story = (props) => {
         item = false;
         prevCluePlaying[idx] = false;
       });
-      console.log("should be [false,false]: ", prevCluePlaying);
       prevCluePlaying[idx] = true;
-      console.log("idx: ", idx);
-      console.log("prevcluePlaying: ", prevCluePlaying);
       return [...prevCluePlaying];
     });
     setConclusionPlaying((prevConclusionPlaying) => {
-      prevConclusionPlaying.forEach((item) => {
+      prevConclusionPlaying.forEach((item, idx) => {
         item = false;
+        prevConclusionPlaying[idx] = false;
       });
       return [...prevConclusionPlaying];
     });
@@ -276,14 +274,16 @@ const Story = (props) => {
     setStartPlaying(false);
     setBriefPlaying(false);
     setCluePlaying((prevCluePlaying) => {
-      prevCluePlaying.forEach((item) => {
+      prevCluePlaying.forEach((item, idx) => {
         item = false;
+        prevCluePlaying[idx] = false;
       });
       return [...prevCluePlaying];
     });
     setConclusionPlaying((prevConclusionPlaying) => {
-      prevConclusionPlaying.forEach((item) => {
+      prevConclusionPlaying.forEach((item, idx) => {
         item = false;
+        prevConclusionPlaying[idx] = false;
       });
       prevConclusionPlaying[idx] = true;
       return [...prevConclusionPlaying];
