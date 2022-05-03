@@ -439,7 +439,7 @@ const Story = (props) => {
               <Result
                 showResult={showResult}
                 data={sample[params.day - 1].final}
-                day={params}
+                day={params.day}
               ></Result>
             </Element>
           </div>
