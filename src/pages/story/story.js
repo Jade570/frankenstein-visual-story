@@ -121,7 +121,10 @@ const Story = (props) => {
             setClue((prevClue) => [...prevClue, new Audio(url)]);
           });
           tempConclusion.forEach((url) => {
-            setClue((prevConclusion) => [...prevConclusion, new Audio(url)]);
+            setConclusion((prevConclusion) => [
+              ...prevConclusion,
+              new Audio(url),
+            ]);
           });
           voice.onloadstart = () => {
             setPendingVoice((cnt) => cnt - 1);
