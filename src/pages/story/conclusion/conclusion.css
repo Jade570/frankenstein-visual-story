@@ -1,0 +1,39 @@
+.Conclusion {
+  width: 80vw;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  display: block;
+}
+
+.Ai {
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+.AiText {
+  width: 85%;
+  height: 20vh;
+  margin-top: 10%;
+  padding: 5%;
+  text-align: center;
+  font-size: 1.2em;
+  border: 2px solid white;
+  margin-left: auto;
+  margin-right: auto;
+}
+.PlayerText {
+  width: 85%;
+  height: 20vh;
+  margin-top: 5%;
+  padding: 5%;
+  text-align: center;
+  font-size: 1.2em;
+  border: 2px solid white;
+  margin-left: auto;
+  margin-right: auto;
+}
