@@ -95,62 +95,84 @@ const Story = (props) => {
       setPendingVoice(list.items.length);
       let tempClue = [];
       let tempConclusion = [];
+      let ttclue = [];
+      let ttconclusion = [];
+
       // 세부 디렉토리 안의 아이템 나열
       list.prefixes.forEach(async (folderRef) => {
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
-          const voice = document.createElement("audio");
-          voice.src = url;
           if (url.includes("clue")) {
-            //setClue((clue) => [...clue, new Audio(url)]);
             tempClue.push(url);
             setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
             tempConclusion.push(url);
-            //setConclusion((conclusion) => [...conclusion, new Audio(url)]);
             setConclusionPlaying((conclusionPlaying) => [
               ...conclusionPlaying,
               false,
             ]);
           }
-
-          voice.onloadstart = () => {
-            setPendingVoice((cnt) => cnt - 1);
-          };
         });
       });
-
+      //처음 디렉토리 안의 아이템 나열
       list.items.forEach(async (item) => {
         const url = await getDownloadURL(item);
         const voice = document.createElement("audio");
         voice.src = url;
         if (url.includes("brief.mp3")) {
-          setBrief(new Audio(url));
+          setBrief(voice);
         } else if (url.includes("start.mp3")) {
-          setStart(new Audio(url));
+          setStart(voice);
         }
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
+          console.log(pendingVoice);
         };
       });
 
-      let ttclue = tempClue.filter((c, idx) => {
-        return tempClue.indexOf(c) === idx;
-      });
-      let ttconclusion = tempConclusion.filter((c, idx) => {
-        return tempConclusion.indexOf(c) === idx;
-      });
+      //sort arrays
+      tempClue.sort();
+      tempConclusion.sort();
+      console.log("tempClue:", tempClue);
+      console.log("tempConclusion:", tempConclusion);
+      for (let i = 0; i < tempClue.length; i++) {
+        if (ttclue.includes(tempClue[i])) {
+          ttclue.push(tempClue[i]);
+        }
+      }
+      for (let i = 0; i < tempConclusion.length; i++) {
+        if (ttconclusion.includes(tempConclusion[i])) {
+          ttconclusion.push(tempClue[i]);
+        }
+      }
+      console.log("before Sort clue:", ttclue);
+      console.log("before Sort conclusion:", ttconclusion);
       ttclue.sort();
       ttconclusion.sort();
-      console.log(ttclue);
-      console.log(ttconclusion);
+      console.log("after sort clue:", ttclue);
+      console.log("after sort conclusion:", ttconclusion);
+
+      //update clue
       ttclue.forEach((url) => {
-        setClue((prevClue) => [...prevClue, new Audio(url)]);
+        const voice = document.createElement("audio");
+        voice.src = url;
+        setClue((prevClue) => [...prevClue, voice]);
+        voice.onloadstart = () => {
+          setPendingVoice((cnt) => cnt - 1);
+          console.log(pendingVoice);
+        };
       });
+      //update conclusion
       ttconclusion.forEach((url) => {
-        setConclusion((prevConclusion) => [...prevConclusion, new Audio(url)]);
+        const voice = document.createElement("audio");
+        voice.src = url;
+        setConclusion((prevConclusion) => [...prevConclusion, voice]);
+        voice.onloadstart = () => {
+          setPendingVoice((cnt) => cnt - 1);
+          console.log(pendingVoice);
+        };
       });
     } catch (e) {
       console.log("error");
@@ -200,7 +222,7 @@ const Story = (props) => {
 
   //control audio play by useEffect
   useEffect(() => {
-    if (startPlaying) {
+    if (startPlaying && isVoiceLoaded) {
       start.play();
     } else {
       start.pause();
@@ -209,7 +231,7 @@ const Story = (props) => {
   }, [startPlaying]);
 
   useEffect(() => {
-    if (briefPlaying) {
+    if (briefPlaying && isVoiceLoaded) {
       brief.play();
     } else {
       brief.pause();
@@ -218,23 +240,27 @@ const Story = (props) => {
   }, [briefPlaying]);
 
   useEffect(() => {
-    cluePlaying.forEach((item, idx) => {
-      if (item) clue[idx].play();
-      else {
-        clue[idx].pause();
-        clue[idx].currentTime = 0;
-      }
-    });
+    if (isVoiceLoaded) {
+      cluePlaying.forEach((item, idx) => {
+        if (item) clue[idx].play();
+        else {
+          clue[idx].pause();
+          clue[idx].currentTime = 0;
+        }
+      });
+    }
   }, [cluePlaying]);
 
   useEffect(() => {
-    conclusionPlaying.forEach((item, idx) => {
-      if (item) conclusion[idx].play();
-      else {
-        conclusion[idx].pause();
-        conclusion[idx].currentTime = 0;
-      }
-    });
+    if (isVoiceLoaded) {
+      conclusionPlaying.forEach((item, idx) => {
+        if (item) conclusion[idx].play();
+        else {
+          conclusion[idx].pause();
+          conclusion[idx].currentTime = 0;
+        }
+      });
+    }
   }, [conclusionPlaying]);
 
   //audio control functions
