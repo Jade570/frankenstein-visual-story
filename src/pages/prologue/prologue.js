@@ -344,7 +344,7 @@ const FadeInOut = (props) => {
                 <div className="10">
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fopening%20sequence%2F10.gif?alt=media&token=d4bfd08c-5e72-481e-8fea-5a4705f5ec0e"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fopening%20sequence%2F11.gif?alt=media&token=1d2a7f0e-75fb-4f33-96af-8259b5fdcbde"
                     }
                     style={box}
                   ></img>
