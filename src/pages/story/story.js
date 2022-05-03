@@ -36,6 +36,7 @@ const Story = (props) => {
   const [objectImage, setObjectImage] = useState([]);
   const [suggestion1, setSuggestion1] = useState([]);
   const [suggestion2, setSuggestion2] = useState([]);
+  const [ai, setAi] = useState({ blink: "", talk: "", think: "" });
 
   //voice lists
   const [start, setStart] = useState(new Audio());
@@ -186,6 +187,7 @@ const Story = (props) => {
       prevCluePlaying.forEach((item) => {
         item = false;
       });
+      return prevCluePlaying;
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
@@ -201,6 +203,7 @@ const Story = (props) => {
       prevCluePlaying.forEach((item) => {
         item = false;
       });
+      return prevCluePlaying;
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
@@ -217,11 +220,13 @@ const Story = (props) => {
         item = false;
       });
       prevCluePlaying[idx] = true;
+      return prevCluePlaying;
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
+      return prevConclusionPlaying;
     });
   };
 
@@ -232,12 +237,14 @@ const Story = (props) => {
       prevCluePlaying.forEach((item) => {
         item = false;
       });
+      return prevCluePlaying;
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
       prevConclusionPlaying[idx] = true;
+      return prevConclusionPlaying;
     });
   };
 
