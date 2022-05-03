@@ -36,6 +36,16 @@ const App = () => {
             path="/day/:day"
             element={<Story storage={storage} />}
           ></Route>
+          <Route
+            exact
+            path="/ending"
+            element={<Normal storage={storage} />}
+          ></Route>
+          <Route
+            exact
+            path="/true-ending"
+            element={<True storage={storage} />}
+          ></Route>
           <Route exact path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
