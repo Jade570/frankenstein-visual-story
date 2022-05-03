@@ -6,8 +6,8 @@ const App = (props) => {
   const [subject2, setSubject2] = useState("");
 
   const click = () => {
-    if (myAnswer === props.answer) {
-      props.func;
+    if (props.myAnswer === props.answer) {
+      props.func();
     } else {
       return (
         <p>
@@ -20,11 +20,8 @@ const App = (props) => {
 
   useEffect(() => {
     setSubject1(props.notes[0][props.myAnswer[0] - 1]);
-  }, [props.myAnswer[0]]);
-
-  useEffect(() => {
     setSubject2(props.notes[1][props.myAnswer[1] - 1]);
-  }, [props.myAnswer[1]]);
+  }, [props.myAnswer]);
 
   return (
     <div className="Notes">

@@ -1,4 +1,4 @@
-import { React, useState, forwardRef } from "react";
+import { React, useState } from "react";
 import Frames from "./frames/frames";
 import ProgressBar from "./progressBar/progressBar";
 
