@@ -4,7 +4,7 @@ import Notes from "./notes/notes.js";
 import "./investigation.css";
 
 const Investigation = (props) => {
-  const [myAnswer, setMyAnswer] = useState([0, 0]);
+  const [myAnswer, setMyAnswer] = useState([-1, -1]);
   if (props.showInvestigation) {
     return (
       <div className="Investigation">
