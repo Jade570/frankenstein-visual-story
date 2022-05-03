@@ -144,10 +144,7 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
-      console.log(clue);
-      console.log(cluePlaying);
     }
-    console.log(pendingVoice);
   }, [pendingVoice]);
 
   //control audio play by useEffect
@@ -193,6 +190,7 @@ const Story = (props) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
+      return prevConclusionPlaying;
     });
   };
 
@@ -209,6 +207,7 @@ const Story = (props) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
+      return prevConclusionPlaying;
     });
   };
 
