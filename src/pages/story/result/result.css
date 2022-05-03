@@ -1,1 +1,19 @@
+.Result {
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  padding: 10%;
+}
 
+Button {
+  margin: 10%;
+  width: 9em;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-top: 3em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  margin-bottom: 3em;
+  font-size: 1.1em;
+  border: none;
+}

@@ -1,23 +1,24 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./result.css";
 
 const Result = (props) => {
   const navigate = useNavigate();
   const buttonFunc = () => {
     if (props.day < 4) {
       const nextPage = ["/day/", parseInt(props.day + 1)].join("");
-      Navigate(nextPage);
+      navigate(nextPage);
     } else if (props.day === 4) {
-      Navigate("/ending");
+      navigate("/ending");
     } else if (props.day === 5) {
-      Navigate("/true-ending");
+      navigate("/true-ending");
     }
   };
 
   if (props.showResult) {
     return (
       <div className="Result">
-        {props.data}
+        <div className="Report">{props.data}</div>
         <button onClick={buttonFunc}>continue</button>
       </div>
     );
