@@ -171,7 +171,7 @@ const Story = (props) => {
   useEffect(() => {
     if (clueState > -1) {
       playClue(clueState);
-      console.log("useEffect working, ", cluePlaying);
+      console.log("useEffect working, ", clueState);
     }
   }, [clueState]);
 
@@ -266,7 +266,6 @@ const Story = (props) => {
       });
       return [...prevConclusionPlaying];
     });
-    console.log("playClue working, ", cluePlaying);
   };
 
   const playConclusion = (idx) => {
