@@ -23,7 +23,7 @@ const Investigation = (props) => {
 
         <Notes
           className="Notes"
-          data={props.data.notes}
+          notes={props.data.notes}
           func={props.func}
           myAnswer={myAnswer}
           answer={props.data.answer}
