@@ -22,7 +22,7 @@ const App = (props) => {
     setSubject1(props.notes[0][props.myAnswer[0] - 1]);
     setSubject2(props.notes[1][props.myAnswer[1] - 1]);
     console.log(props.myAnswer);
-  }, [props.myAnswer]);
+  }, []);
 
   return (
     <div className="Notes">
