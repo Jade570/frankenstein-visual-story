@@ -3,11 +3,11 @@ import "./conclusion.css";
 
 const blockedText = {
   width: "85%",
-  height: "20vh",
-  marginTop: "10%",
-  padding: "5%",
+  minHeight: "30vh",
+  marginTop: "3vh",
+  padding: "3%",
   textAlign: "center",
-  fontSize: "1.2em",
+  fontSize: "1em",
   border: "2px solid white",
   opacity: "0.5",
   marginLeft: "auto",
@@ -17,11 +17,11 @@ const blockedText = {
 
 const currentText = {
   width: "85%",
-  height: "20vh",
-  marginTop: "10%",
-  padding: "5%",
+  minHeight: "30vh",
+  marginTop: "3vh",
+  padding: "3%",
   textAlign: "center",
-  fontSize: "1.2em",
+  fontSize: "1em",
   border: "2px solid white",
   opacity: "1",
   marginLeft: "auto",
