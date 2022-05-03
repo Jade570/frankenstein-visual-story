@@ -398,8 +398,8 @@ const Story = (props) => {
   if (sample[params.day - 1]) {
     return (
       <div>
-        {!(isImageLoaded && isVoiceLoaded) && <div>Loading</div>}
-        {isImageLoaded && isVoiceLoaded && (
+        {!(isImageLoaded /*&& isVoiceLoaded*/) && <div>Loading</div>}
+        {isImageLoaded /*&& isVoiceLoaded*/ && (
           <div>
             <Day func={scrollToBriefing} day={params.day} start={start} />
             <Element name="Briefing">
