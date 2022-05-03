@@ -167,6 +167,7 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
+      console.log(clue);
     }
   }, [pendingVoice]);
 
