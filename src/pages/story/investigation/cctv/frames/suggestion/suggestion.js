@@ -6,7 +6,6 @@ const MyModal = (props) => {
     props.closeAll();
     props.setMyAnswer((prevMyAnswer) => {
       prevMyAnswer[props.number] = 1;
-      console.log(prevMyAnswer);
       return prevMyAnswer;
     });
   };
@@ -14,7 +13,6 @@ const MyModal = (props) => {
     props.setMyAnswer((prevMyAnswer) => {
       props.closeAll();
       prevMyAnswer[props.number] = 2;
-      console.log(prevMyAnswer);
       return prevMyAnswer;
     });
   };
@@ -22,7 +20,6 @@ const MyModal = (props) => {
     props.setMyAnswer((prevMyAnswer) => {
       props.closeAll();
       prevMyAnswer[props.number] = 3;
-      console.log(prevMyAnswer);
       return prevMyAnswer;
     });
   };
@@ -32,17 +29,32 @@ const MyModal = (props) => {
         <div className="imgBox">
           <img
             src={props.suggestion[0]}
-            style={{ border: "5px solid green", margin: "10px", width: "20%" }}
+            style={{
+              border: "5px solid green",
+              margin: "10px",
+              width: "20%",
+              cursor: "pointer",
+            }}
             onClick={click1}
           ></img>
           <img
             src={props.suggestion[1]}
-            style={{ border: "5px solid yellow", margin: "10px", width: "20%" }}
+            style={{
+              border: "5px solid yellow",
+              margin: "10px",
+              width: "20%",
+              cursor: "pointer",
+            }}
             onClick={click2}
           ></img>
           <img
             src={props.suggestion[2]}
-            style={{ border: "5px solid red", margin: "10px", width: "20%" }}
+            style={{
+              border: "5px solid red",
+              margin: "10px",
+              width: "20%",
+              cursor: "pointer",
+            }}
             onClick={click3}
           ></img>
         </div>
