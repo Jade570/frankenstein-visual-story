@@ -257,13 +257,13 @@ const Story = (props) => {
         item = false;
       });
       prevCluePlaying[idx] = true;
-      return prevCluePlaying;
+      return [...prevCluePlaying];
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
-      return prevConclusionPlaying;
+      return [...prevConclusionPlaying];
     });
     console.log("playClue working, ", idx);
   };
@@ -275,14 +275,14 @@ const Story = (props) => {
       prevCluePlaying.forEach((item) => {
         item = false;
       });
-      return prevCluePlaying;
+      return [...prevCluePlaying];
     });
     setConclusionPlaying((prevConclusionPlaying) => {
       prevConclusionPlaying.forEach((item) => {
         item = false;
       });
       prevConclusionPlaying[idx] = true;
-      return prevConclusionPlaying;
+      return [...prevConclusionPlaying];
     });
   };
 
