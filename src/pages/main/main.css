@@ -1,0 +1,21 @@
+.Main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+.Main div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Main img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Main h2 {
+  text-align: center;
+}

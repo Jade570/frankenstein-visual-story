@@ -1,13 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./main.css";
 
 const Main = (props) => {
+  const navigate = useNavigate();
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <div>
-        <h1>AI Knows The Answer</h1>
-        <Link to="/prologue">Start</Link>
-      </div>
+    <div
+      className="Main"
+      onClick={() => {
+        navigate("/prologue");
+      }}
+    >
+      <img src="https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fintro_nobg.png?alt=media&token=e3359505-ee07-4786-99e5-576a6ddf4316"></img>
+      <h2>click anywhere to start</h2>
     </div>
   );
 };
