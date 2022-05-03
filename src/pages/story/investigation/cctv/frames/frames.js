@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./frames.css";
 import MyModal from "./suggestion/suggestion.js";
 
@@ -23,6 +23,18 @@ const Frames = (props) => {
     setSugg1(false);
     setSugg2(false);
   };
+
+  useEffect(() => {
+    if (sugg1) {
+      props.playClue(0);
+    }
+  }, [sugg1]);
+
+  useEffect(() => {
+    if (sugg2) {
+      props.playClue(1);
+    }
+  }, [sugg2]);
 
   return (
     <div>

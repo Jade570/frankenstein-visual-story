@@ -18,6 +18,7 @@ const Investigation = (props) => {
             suggestion2={props.suggestion2}
             myAnswer={myAnswer}
             setMyAnswer={setMyAnswer}
+            playClue={props.playClue}
           />
         </div>
 

@@ -356,6 +356,7 @@ const Story = (props) => {
                 suggestion1={suggestion1}
                 suggestion2={suggestion2}
                 start={start}
+                playClue={playClue}
               />
             </Element>
             <Element name="Conclusion">
