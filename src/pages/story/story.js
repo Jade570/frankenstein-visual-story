@@ -150,9 +150,9 @@ const Story = (props) => {
       });
       tempsuggestion2.sort();
 
-      objectImage = tempobjectImage;
-      suggestion1 = tempsuggestion1;
-      suggestion2 = tempsuggestion2;
+      setObjectImage(tempobjectImage);
+      setSuggestion1(tempsuggestion1);
+      setSuggestion2(tempsuggestion2);
     }
   }, [loadImages]);
 
