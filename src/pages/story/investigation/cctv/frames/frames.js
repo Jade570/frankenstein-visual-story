@@ -26,13 +26,13 @@ const Frames = (props) => {
 
   useEffect(() => {
     if (sugg1) {
-      props.playClue(0);
+      props.setClueState(0);
     }
   }, [sugg1]);
 
   useEffect(() => {
     if (sugg2) {
-      props.playClue(1);
+      props.setClueState(1);
     }
   }, [sugg2]);
 

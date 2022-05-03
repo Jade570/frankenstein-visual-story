@@ -18,6 +18,8 @@ const Cctv = (props) => {
         grid2={props.data.grid.suggestion2}
         myAnswer={props.myAnswer}
         setMyAnswer={props.setMyAnswer}
+        clueState={props.clueState}
+        setClueState={props.setClueState}
       />
       <ProgressBar
         frame={frame}

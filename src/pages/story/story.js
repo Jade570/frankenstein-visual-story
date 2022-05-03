@@ -43,6 +43,12 @@ const Story = (props) => {
   const [clue, setClue] = useState([]);
   const [conclusion, setConclusion] = useState([]);
 
+  //clue state
+  const [clueState, setClueState] = useState(-1);
+
+  //conclusion state
+  const [conclusionState, setConclusionState] = useState(-1);
+
   //voice Controls
   const [startPlaying, setStartPlaying] = useState(false);
   const [briefPlaying, setBriefPlaying] = useState(false);
@@ -161,6 +167,12 @@ const Story = (props) => {
       setIsVoiceLoaded(true);
     }
   }, [pendingVoice]);
+
+  useEffect(() => {
+    if (clueState > -1) {
+      playClue(clueState);
+    }
+  }, [clueState]);
 
   //control audio play by useEffect
   useEffect(() => {
@@ -356,7 +368,8 @@ const Story = (props) => {
                 suggestion1={suggestion1}
                 suggestion2={suggestion2}
                 start={start}
-                playClue={playClue}
+                clueState={clueState}
+                setClueState={setClueState}
               />
             </Element>
             <Element name="Conclusion">
