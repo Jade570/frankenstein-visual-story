@@ -247,6 +247,23 @@ const Story = (props) => {
     });
   };
 
+  const stopAll = (idx) => {
+    setStartPlaying(false);
+    setBriefPlaying(false);
+    setCluePlaying((prevCluePlaying) => {
+      prevCluePlaying.forEach((item) => {
+        item = false;
+      });
+      return prevCluePlaying;
+    });
+    setConclusionPlaying((prevConclusionPlaying) => {
+      prevConclusionPlaying.forEach((item) => {
+        item = false;
+      });
+      return prevConclusionPlaying;
+    });
+  };
+
   //scroll functions
   const scrollToBriefing = () => {
     setShowBriefing(true);
@@ -300,6 +317,7 @@ const Story = (props) => {
                 data={sample[params.day - 1].briefing}
                 image={background}
                 playBrief={playBrief}
+                stopAll={stopAll}
               />
             </Element>
             <Element name="Investigation">

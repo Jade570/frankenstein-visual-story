@@ -60,7 +60,7 @@ const ProgressBar = ({ frame, setFrame, frameNum }) => {
         <button onClick={() => setRunning(false)}>Pause</button>
         <button onClick={() => reset()}>Stop</button>
       </div>
-      <div>frame {frame} in CCTV</div>
+      <div>frame {parseInt(frame) + 1} in CCTV</div>
     </div>
   );
 };

@@ -23,6 +23,20 @@
 					"Mark on the victim’s face = hives",
 					"Mark on the victim’s face = a pimple"]
 			],
+			"grid":{
+				"suggestion1":[{"column":"9/10", "row":"6/18"},
+							{"column":"9/12", "row":"6/18"},
+							{"column":"9/12", "row":"7/18"},
+							{"column":"9/11", "row":"5/18"},
+							{"column":"9/11", "row":"5/18"},
+							{"column":"1/1", "row":"1/1"}],
+				"suggestion2":[{"column":"10/11", "row":"7/9"},
+							{"column":"12/14", "row":"6/9"},
+							{"column":"12/14", "row":"9/11"},
+							{"column":"12/14", "row":"9/11"},
+							{"column":"12/14", "row":"9/11"},
+							{"column":"12/14", "row":"9/11"}]
+			},
 			"accuracy":[[77,40,38],[67,55,30]],
 			"answer": [3,2]
 		},

@@ -11,6 +11,7 @@ const Briefing = (props) => {
       setShowBriefNote(true);
       props.playBrief();
     } else {
+      props.stopAll();
       props.func();
     }
   };
