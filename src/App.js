@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/main/main.js";
 import FadeInOut from "./pages/prologue/prologue.js";
 import Story from "./pages/story/story.js";
+import Normal from "./pages/normal/normal.js";
+import True from "./pages/true/true.js";
 import NotFound from "./NotFound";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref } from "firebase/storage";

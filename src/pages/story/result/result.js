@@ -8,9 +8,9 @@ const Result = (props) => {
       const nextPage = ["/day/", parseInt(props.day + 1)].join("");
       Navigate(nextPage);
     } else if (props.day === 4) {
-      Navigate("/normal");
+      Navigate("/ending");
     } else if (props.day === 5) {
-      Navigate("/true");
+      Navigate("/true-ending");
     }
   };
 
@@ -18,7 +18,7 @@ const Result = (props) => {
     return (
       <div className="Result">
         {props.data}
-        <button>onClick={buttonFunc}</button>
+        <button onClick={buttonFunc}>continue</button>
       </div>
     );
   } else {
