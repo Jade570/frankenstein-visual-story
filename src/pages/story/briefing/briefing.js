@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from "react";
 import "./briefing.css";
 import BriefNote from "./note/note.js";
-import ai from "./ai.gif";
 
 const Briefing = (props) => {
   const data = props.data;
@@ -20,7 +19,7 @@ const Briefing = (props) => {
     return (
       <div className="briefing">
         <img
-          src={ai}
+          src="https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_talking(no_background).gif?alt=media&token=26c39abd-275e-40df-876c-cb0212d1f290"
           style={{ width: "4em", height: "4em", objectFit: "cover" }}
         ></img>
         <div className="greeting">
