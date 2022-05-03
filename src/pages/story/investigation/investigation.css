@@ -24,6 +24,7 @@
 }
 
 @media screen and (min-width: 769px) {
+  /*desktop*/
   .Investigation {
     width: 100vw;
     min-height: 100vh;

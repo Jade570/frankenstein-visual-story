@@ -12,11 +12,13 @@ const Cctv = (props) => {
         data={props.data}
         background={props.background}
         object={props.object}
+        suggestion1={props.suggestion1}
+        suggestion2={props.suggestion2}
       />
       <ProgressBar
         frame={frame}
         setFrame={setFrame}
-        frameNum={props.data.frames}
+        frameNum={props.data.frames - 1}
       />
     </div>
   );

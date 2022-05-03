@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Investigation from "./investigation/investigation.js";
 import Briefing from "./briefing/briefing.js";
 import Day from "./day/day.js";
+import Conclusion from "./conclusion/conclusion.js";
 import Result from "./result/result.js";
 import sample from "./src/script.json";
 import NotFound from "../../NotFound";
@@ -17,6 +18,7 @@ const Story = (props) => {
   //states for show/hide contents
   const [showBriefing, setShowBriefing] = useState(false);
   const [showInvestigation, setShowInvestigation] = useState(false);
+  const [showConclusion, setShowConclusion] = useState(false);
   const [showResult, setShowResult] = useState(false);
 
   //variables for firebase storage sdk
@@ -32,14 +34,20 @@ const Story = (props) => {
   //image lists
   const [background, setBackground] = useState("");
   const [objectImage, setObjectImage] = useState([]);
-  const [subject1, setSubject1] = useState([]);
-  const [subject2, setSubject2] = useState([]);
+  const [suggestion1, setSuggestion1] = useState([]);
+  const [suggestion2, setSuggestion2] = useState([]);
 
   //voice lists
-  const [start, setStart] = useState("");
-  const [brief, setBrief] = useState("");
+  const [start, setStart] = useState(new Audio());
+  const [brief, setBrief] = useState(new Audio());
   const [clue, setClue] = useState([]);
   const [conclusion, setConclusion] = useState([]);
+
+  //voice Controls
+  const [startPlaying, setStartPlaying] = useState(false);
+  const [briefPlaying, setBriefPlaying] = useState(false);
+  const [cluePlaying, setCluePlaying] = useState([]);
+  const [conclusionPlaying, setConclusionPlaying] = useState([]);
 
   //load image and save urls
   const loadImages = async () => {
@@ -58,9 +66,9 @@ const Story = (props) => {
         } else if (imageURL.includes("ob_")) {
           setObjectImage((objectImage) => [...objectImage, imageURL]);
         } else if (imageURL.includes("sj_1")) {
-          setSubject1((subject1) => [...subject1, imageURL]);
+          setSuggestion1((suggestion1) => [...suggestion1, imageURL]);
         } else if (imageURL.includes("sj_2")) {
-          setSubject2((subject2) => [...subject2, imageURL]);
+          setSuggestion2((suggestion2) => [...suggestion2, imageURL]);
         }
         const image = document.createElement("img");
         image.src = imageURL;
@@ -73,7 +81,7 @@ const Story = (props) => {
     }
   };
 
-  //load voice and save urls
+  //load voice and save audios
   const loadVoice = async () => {
     try {
       // 처음 디렉토리 안의 아이템 나열
@@ -88,9 +96,14 @@ const Story = (props) => {
           const voice = document.createElement("audio");
           voice.src = url;
           if (url.includes("clue")) {
-            setClue((clue) => [...clue, url]);
+            setClue((clue) => [...clue, new Audio(url)]);
+            setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
-            setConclusion((conclusion) => [...conclusion, url]);
+            setConclusion((conclusion) => [...conclusion, new Audio(url)]);
+            setConclusionPlaying((conclusionPlaying) => [
+              ...conclusionPlaying,
+              false,
+            ]);
           }
           voice.onloadstart = () => {
             setPendingVoice((cnt) => cnt - 1);
@@ -103,11 +116,10 @@ const Story = (props) => {
         const voice = document.createElement("audio");
         voice.src = url;
         if (url.includes("brief.mp3")) {
-          setBrief(url);
+          setBrief(new Audio(url));
         } else if (url.includes("start.mp3")) {
-          setStart(url);
+          setStart(new Audio(url));
         }
-        setBrief(url);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
         };
@@ -115,34 +127,6 @@ const Story = (props) => {
     } catch (e) {
       console.log("error");
     }
-  };
-
-  //scroll functions
-  const scrollToBriefing = () => {
-    setShowBriefing(true);
-    Scroll.scroller.scrollTo("Briefing", {
-      duration: 800,
-      delay: 50,
-      smooth: true,
-    });
-  };
-
-  const scrollToInvestigation = () => {
-    setShowInvestigation(true);
-    Scroll.scroller.scrollTo("Investigation", {
-      duration: 800,
-      delay: 50,
-      smooth: true,
-    });
-  };
-
-  const scrollToResult = () => {
-    setShowResult(true);
-    Scroll.scroller.scrollTo("Result", {
-      duration: 800,
-      delay: 50,
-      smooth: true,
-    });
   };
 
   useEffect(() => {
@@ -159,8 +143,141 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
+      console.log(clue);
+      console.log(cluePlaying);
     }
+    console.log(pendingVoice);
   }, [pendingVoice]);
+
+  //control audio play by useEffect
+  useEffect(() => {
+    if (startPlaying) {
+      start.play();
+    } else {
+      start.pause();
+      start.currentTime = 0;
+    }
+  }, [startPlaying]);
+
+  useEffect(() => {
+    if (briefPlaying) {
+      brief.play();
+    } else {
+      brief.pause();
+      brief.currentTime = 0;
+    }
+  }, [briefPlaying]);
+
+  useEffect(() => {
+    cluePlaying.forEach((item, idx) => {
+      if (item) clue[idx].play();
+      else {
+        clue[idx].pause();
+        clue[idx].currentTime = 0;
+      }
+    });
+  }, [cluePlaying]);
+
+  //audio control functions
+  const playStart = () => {
+    setStartPlaying(true);
+    setBriefPlaying(false);
+    setCluePlaying((prevCluePlaying) => {
+      prevCluePlaying.forEach((item) => {
+        item = false;
+      });
+    });
+    setConclusionPlaying((prevConclusionPlaying) => {
+      prevConclusionPlaying.forEach((item) => {
+        item = false;
+      });
+    });
+  };
+
+  const playBrief = () => {
+    setStartPlaying(false);
+    setBriefPlaying(true);
+    setCluePlaying((prevCluePlaying) => {
+      prevCluePlaying.forEach((item) => {
+        item = false;
+      });
+    });
+    setConclusionPlaying((prevConclusionPlaying) => {
+      prevConclusionPlaying.forEach((item) => {
+        item = false;
+      });
+    });
+  };
+
+  const playClue = (idx) => {
+    setStartPlaying(false);
+    setBriefPlaying(false);
+    setCluePlaying((prevCluePlaying) => {
+      prevCluePlaying.forEach((item) => {
+        item = false;
+      });
+      prevCluePlaying[idx] = true;
+    });
+    setConclusionPlaying((prevConclusionPlaying) => {
+      prevConclusionPlaying.forEach((item) => {
+        item = false;
+      });
+    });
+  };
+
+  const playConclusion = (idx) => {
+    setStartPlaying(false);
+    setBriefPlaying(false);
+    setCluePlaying((prevCluePlaying) => {
+      prevCluePlaying.forEach((item) => {
+        item = false;
+      });
+    });
+    setConclusionPlaying((prevConclusionPlaying) => {
+      prevConclusionPlaying.forEach((item) => {
+        item = false;
+      });
+      prevConclusionPlaying[idx] = true;
+    });
+  };
+
+  //scroll functions
+  const scrollToBriefing = () => {
+    setShowBriefing(true);
+    playStart();
+    Scroll.scroller.scrollTo("Briefing", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
+  };
+
+  const scrollToInvestigation = () => {
+    setShowInvestigation(true);
+    Scroll.scroller.scrollTo("Investigation", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
+  };
+
+  const scrollToConclusion = () => {
+    setShowConclusion(true);
+    Scroll.scroller.scrollTo("Conclusion", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
+  };
+
+  const scrollToResult = () => {
+    setShowResult(true);
+    Scroll.scroller.scrollTo("Result", {
+      duration: 800,
+      delay: 50,
+      smooth: true,
+    });
+  };
 
   if (sample[params.day - 1]) {
     return (
@@ -168,7 +285,7 @@ const Story = (props) => {
         {!(isImageLoaded && isVoiceLoaded) && <div>Loading</div>}
         {isImageLoaded && isVoiceLoaded && (
           <div>
-            <Day func={scrollToBriefing} day={params.day} />
+            <Day func={scrollToBriefing} day={params.day} start={start} />
             <Element name="Briefing">
               <Briefing
                 func={scrollToInvestigation}
@@ -176,19 +293,27 @@ const Story = (props) => {
                 day={params.day}
                 data={sample[params.day - 1].briefing}
                 image={background}
+                playBrief={playBrief}
               />
             </Element>
             <Element name="Investigation">
               <Investigation
-                func={scrollToResult}
+                func={scrollToConclusion}
                 showInvestigation={showInvestigation}
                 data={sample[params.day - 1].investigation}
                 day={params}
                 background={background}
                 object={objectImage}
-                subject1={subject1}
-                subject2={subject2}
+                suggestion1={suggestion1}
+                suggestion2={suggestion2}
+                start={start}
               />
+            </Element>
+            <Element name="Conclusion">
+              <Conclusion
+                showConclusion={showConclusion}
+                func={scrollToResult}
+              ></Conclusion>
             </Element>
             <Element name="Result">
               <Result showResult={showResult}></Result>

@@ -13,11 +13,12 @@ const Investigation = (props) => {
             data={props.data.cctv}
             background={props.background}
             object={props.object}
+            suggestion1={props.suggestion1}
+            suggestion2={props.suggestion2}
           />
         </div>
 
-        <Notes className="Notes" data={props.data.notes} />
-        <button></button>
+        <Notes className="Notes" data={props.data.notes} func={props.func} />
       </div>
     );
   } else {

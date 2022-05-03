@@ -9,6 +9,7 @@ const Briefing = (props) => {
   const buttonFunc = () => {
     if (showBriefNote === false) {
       setShowBriefNote(true);
+      props.playBrief();
     } else {
       props.func();
     }

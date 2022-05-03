@@ -1,0 +1,16 @@
+.modal {
+  z-index: 99;
+  background-color: #ffffffaa;
+  display: flexbox;
+  position: fixed;
+  bottom: 100px;
+}
+
+/* .imgBox {
+  width: 90%;
+  height: 90%;
+} */
+
+img {
+  width: 25%;
+}
