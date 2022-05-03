@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import { useNavigate } from "react-router-dom";
 import "./result.css";
 
@@ -6,7 +6,7 @@ const Result = (props) => {
   const navigate = useNavigate();
   const buttonFunc = () => {
     if (props.day < 4) {
-      const nextPage = ["/day/", parseInt(props.day + 1)].join("");
+      const nextPage = ["/day/", parseInt(props.day) + 1].join("");
       navigate(nextPage);
     } else if (props.day === 4) {
       navigate("/ending");
