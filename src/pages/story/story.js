@@ -36,7 +36,6 @@ const Story = (props) => {
   const [objectImage, setObjectImage] = useState([]);
   const [suggestion1, setSuggestion1] = useState([]);
   const [suggestion2, setSuggestion2] = useState([]);
-  const [ai, setAi] = useState({ blink: "", talk: "", think: "" });
 
   //voice lists
   const [start, setStart] = useState(new Audio());
@@ -138,6 +137,22 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingImages === 0) {
       setIsImageLoaded(true);
+      let tempobjectImage = objectImage.filter((c, idx) => {
+        return objectImage.indexOf(c) === idx;
+      });
+      tempobjectImage.sort();
+      let tempsuggestion1 = suggestion1.filter((c, idx) => {
+        return suggestion1.indexOf(c) === idx;
+      });
+      tempsuggestion1.sort();
+      let tempsuggestion2 = suggestion2.filter((c, idx) => {
+        return suggestion2.indexOf(c) === idx;
+      });
+      tempsuggestion2.sort();
+
+      objectImage = tempobjectImage;
+      suggestion1 = tempsuggestion1;
+      suggestion2 = tempsuggestion2;
     }
   }, [loadImages]);
 
