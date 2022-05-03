@@ -257,6 +257,7 @@ const Story = (props) => {
         item = false;
       });
       prevCluePlaying[idx] = true;
+      console.log("prevcluePlaying: ", prevCluePlaying);
       return [...prevCluePlaying];
     });
     setConclusionPlaying((prevConclusionPlaying) => {
@@ -265,7 +266,7 @@ const Story = (props) => {
       });
       return [...prevConclusionPlaying];
     });
-    console.log("playClue working, ", idx);
+    console.log("playClue working, ", cluePlaying);
   };
 
   const playConclusion = (idx) => {
