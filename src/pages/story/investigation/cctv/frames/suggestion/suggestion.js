@@ -6,21 +6,21 @@ const MyModal = (props) => {
     props.closeAll();
     props.setMyAnswer((prevMyAnswer) => {
       prevMyAnswer[props.number] = 1;
-      return prevMyAnswer;
+      return [...prevMyAnswer];
     });
   };
   const click2 = () => {
     props.setMyAnswer((prevMyAnswer) => {
       props.closeAll();
       prevMyAnswer[props.number] = 2;
-      return prevMyAnswer;
+      return [...prevMyAnswer];
     });
   };
   const click3 = () => {
     props.setMyAnswer((prevMyAnswer) => {
       props.closeAll();
       prevMyAnswer[props.number] = 3;
-      return prevMyAnswer;
+      return [...prevMyAnswer];
     });
   };
   if (props.isOpen) {

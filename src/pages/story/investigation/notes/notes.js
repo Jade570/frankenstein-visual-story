@@ -21,7 +21,9 @@ const App = (props) => {
         <p>{props.notes[0][props.myAnswer[0] - 1]}</p>
         <p>{props.notes[1][props.myAnswer[1] - 1]}</p>
       </div>
-      <button onClick={click}>continue</button>
+      <button onClick={click} disabled={props.myAnswer !== [0, 0]}>
+        continue
+      </button>
     </div>
   );
 };
