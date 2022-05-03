@@ -312,11 +312,16 @@ const Story = (props) => {
             <Element name="Conclusion">
               <Conclusion
                 showConclusion={showConclusion}
+                data={sample[params.day - 1].conclusion}
                 func={scrollToResult}
               ></Conclusion>
             </Element>
             <Element name="Result">
-              <Result showResult={showResult}></Result>
+              <Result
+                showResult={showResult}
+                data={sample[params.day - 1].final}
+                day={params}
+              ></Result>
             </Element>
           </div>
         )}
