@@ -26,6 +26,7 @@ const Investigation = (props) => {
           data={props.data.notes}
           func={props.func}
           myAnswer={myAnswer}
+          answer={props.data.answer}
         />
       </div>
     );
