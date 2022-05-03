@@ -1,7 +1,7 @@
 import React from "react";
 
 const Conclusion = (props) => {
-  if (props.showResult) {
+  if (props.showConclusion) {
     return <div className="Conclusion">hello</div>;
   } else {
     return <div></div>;
