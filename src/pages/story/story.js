@@ -176,6 +176,16 @@ const Story = (props) => {
     });
   }, [cluePlaying]);
 
+  useEffect(() => {
+    conclusionPlaying.forEach((item, idx) => {
+      if (item) conclusion[idx].play();
+      else {
+        conclusion[idx].pause();
+        conclusion[idx].currentTime = 0;
+      }
+    });
+  }, [conclusionPlaying]);
+
   //audio control functions
   const playStart = () => {
     setStartPlaying(true);
