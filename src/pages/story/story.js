@@ -95,6 +95,8 @@ const Story = (props) => {
       setPendingVoice(list.items.length);
       // 세부 디렉토리 안의 아이템 나열
       list.prefixes.forEach(async (folderRef) => {
+        let tempClue = [];
+        let tempConclusion = [];
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
@@ -102,15 +104,25 @@ const Story = (props) => {
           const voice = document.createElement("audio");
           voice.src = url;
           if (url.includes("clue")) {
-            setClue((clue) => [...clue, new Audio(url)]);
+            //setClue((clue) => [...clue, new Audio(url)]);
+            tempClue.push(url);
             setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
-            setConclusion((conclusion) => [...conclusion, new Audio(url)]);
+            tempConclusion.push(url);
+            //setConclusion((conclusion) => [...conclusion, new Audio(url)]);
             setConclusionPlaying((conclusionPlaying) => [
               ...conclusionPlaying,
               false,
             ]);
           }
+          tempClue.sort();
+          tempConclusion.sort();
+          tempClue.forEach((url) => {
+            setClue((prevClue) => [...prevClue, new Audio(url)]);
+          });
+          tempConclusion.forEach((url) => {
+            setClue((prevConclusion) => [...prevConclusion, new Audio(url)]);
+          });
           voice.onloadstart = () => {
             setPendingVoice((cnt) => cnt - 1);
           };
@@ -167,7 +179,6 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
-      console.log(clue);
     }
   }, [pendingVoice]);
 
