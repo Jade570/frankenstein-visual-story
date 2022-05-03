@@ -1,9 +1,10 @@
-import { React } from "react";
+import { React, useState } from "react";
 import Cctv from "./cctv/cctv.js";
 import Notes from "./notes/notes.js";
 import "./investigation.css";
 
 const Investigation = (props) => {
+  const [myAnswer, setMyAnswer] = useState([0, 0]);
   if (props.showInvestigation) {
     return (
       <div className="Investigation">
@@ -15,10 +16,17 @@ const Investigation = (props) => {
             object={props.object}
             suggestion1={props.suggestion1}
             suggestion2={props.suggestion2}
+            myAnswer={myAnswer}
+            setMyAnswer={setMyAnswer}
           />
         </div>
 
-        <Notes className="Notes" data={props.data.notes} func={props.func} />
+        <Notes
+          className="Notes"
+          data={props.data.notes}
+          func={props.func}
+          myAnswer={myAnswer}
+        />
       </div>
     );
   } else {

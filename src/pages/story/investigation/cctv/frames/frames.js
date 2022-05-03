@@ -48,8 +48,22 @@ const Frames = (props) => {
           gridRow: props.grid2[props.frame].row,
         }}
       ></div>
-      <MyModal isOpen={sugg1} suggestion={props.suggestion1} />
-      <MyModal isOpen={sugg2} suggestion={props.suggestion2} />
+      <MyModal
+        isOpen={sugg1}
+        suggestion={props.suggestion1}
+        myAnswer={props.myAnswer}
+        setMyAnswer={props.setMyAnswer}
+        number={parseInt(0)}
+        closeAll={closeAll}
+      />
+      <MyModal
+        isOpen={sugg2}
+        suggestion={props.suggestion2}
+        myAnswer={props.myAnswer}
+        setMyAnswer={props.setMyAnswer}
+        number={parseInt(1)}
+        closeAll={closeAll}
+      />
     </div>
   );
 };

@@ -16,6 +16,8 @@ const Cctv = (props) => {
         suggestion2={props.suggestion2}
         grid1={props.data.grid.suggestion1}
         grid2={props.data.grid.suggestion2}
+        myAnswer={props.myAnswer}
+        setMyAnswer={props.setMyAnswer}
       />
       <ProgressBar
         frame={frame}
