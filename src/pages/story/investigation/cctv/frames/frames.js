@@ -27,12 +27,14 @@ const Frames = (props) => {
   useEffect(() => {
     if (sugg1) {
       props.setClueState(0);
+      console.log("clueState:", props.clueState);
     }
   }, [sugg1]);
 
   useEffect(() => {
     if (sugg2) {
       props.setClueState(1);
+      console.log("clueState:", props.clueState);
     }
   }, [sugg2]);
 
