@@ -104,8 +104,10 @@ const Story = (props) => {
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
+          console.log("init url:", url);
           if (url.includes("clue")) {
             tempClue.push(url);
+            console.log("this is clue url.", tempClue);
             setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
             tempConclusion.push(url);
