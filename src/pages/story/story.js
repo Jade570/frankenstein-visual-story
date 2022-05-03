@@ -93,10 +93,10 @@ const Story = (props) => {
       // 처음 디렉토리 안의 아이템 나열
       let list = await listAll(voiceRef);
       setPendingVoice(list.items.length);
+      let tempClue = [];
+      let tempConclusion = [];
       // 세부 디렉토리 안의 아이템 나열
       list.prefixes.forEach(async (folderRef) => {
-        let tempClue = [];
-        let tempConclusion = [];
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
@@ -115,19 +115,7 @@ const Story = (props) => {
               false,
             ]);
           }
-          tempClue.sort();
-          tempConclusion.sort();
-          console.log(tempClue);
-          console.log(tempConclusion);
-          tempClue.forEach((url) => {
-            setClue((prevClue) => [...prevClue, new Audio(url)]);
-          });
-          tempConclusion.forEach((url) => {
-            setConclusion((prevConclusion) => [
-              ...prevConclusion,
-              new Audio(url),
-            ]);
-          });
+
           voice.onloadstart = () => {
             setPendingVoice((cnt) => cnt - 1);
           };
@@ -146,6 +134,23 @@ const Story = (props) => {
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
         };
+      });
+
+      let ttclue = tempClue.filter((c, idx) => {
+        return tempClue.indexOf(c) === idx;
+      });
+      let ttconclusion = tempConclusion.filter((c, idx) => {
+        return tempConclusion.indexOf(c) === idx;
+      });
+      ttclue.sort();
+      ttconclusion.sort();
+      console.log(ttclue);
+      console.log(ttconclusion);
+      ttclue.forEach((url) => {
+        setClue((prevClue) => [...prevClue, new Audio(url)]);
+      });
+      ttconclusion.forEach((url) => {
+        setConclusion((prevConclusion) => [...prevConclusion, new Audio(url)]);
       });
     } catch (e) {
       console.log("error");
