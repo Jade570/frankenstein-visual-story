@@ -1,10 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import "./notes.css";
 
 const App = (props) => {
-  const [subject1, setSubject1] = useState("");
-  const [subject2, setSubject2] = useState("");
-
   const click = () => {
     if (props.myAnswer === props.answer) {
       props.func();
@@ -18,17 +15,11 @@ const App = (props) => {
     }
   };
 
-  useEffect(() => {
-    setSubject1(props.notes[0][props.myAnswer[0] - 1]);
-    setSubject2(props.notes[1][props.myAnswer[1] - 1]);
-    console.log(props.myAnswer);
-  }, []);
-
   return (
     <div className="Notes">
       <div className="Note">
-        <p>{subject1}</p>
-        <p>{subject2}</p>
+        <p>{props.notes[0][props.myAnswer[0] - 1]}</p>
+        <p>{props.notes[1][props.myAnswer[1] - 1]}</p>
       </div>
       <button onClick={click}>continue</button>
     </div>
