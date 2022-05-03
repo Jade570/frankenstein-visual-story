@@ -10,7 +10,7 @@ const Investigation = (props) => {
         <div className="Cctv">
           <Cctv
             className="Cctv"
-            data={props.data.cctv}
+            data={props.data}
             background={props.background}
             object={props.object}
             suggestion1={props.suggestion1}

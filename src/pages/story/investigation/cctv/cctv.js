@@ -9,16 +9,18 @@ const Cctv = (props) => {
     <div>
       <Frames
         frame={frame}
-        data={props.data}
+        data={props.data.cctv}
         background={props.background}
         object={props.object}
         suggestion1={props.suggestion1}
         suggestion2={props.suggestion2}
+        grid1={props.data.grid.suggestion1}
+        grid2={props.data.grid.suggestion2}
       />
       <ProgressBar
         frame={frame}
         setFrame={setFrame}
-        frameNum={props.data.frames - 1}
+        frameNum={props.data.cctv.frames - 1}
       />
     </div>
   );
