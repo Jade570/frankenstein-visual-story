@@ -117,6 +117,8 @@ const Story = (props) => {
           }
           tempClue.sort();
           tempConclusion.sort();
+          console.log(tempClue);
+          console.log(tempConclusion);
           tempClue.forEach((url) => {
             setClue((prevClue) => [...prevClue, new Audio(url)]);
           });
