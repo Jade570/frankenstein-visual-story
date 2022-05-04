@@ -99,12 +99,11 @@ const Story = (props) => {
       let ttconclusion = [];
 
       // 세부 디렉토리 안의 아이템 나열
-      list.prefixes.forEach(async (folderRef) => {
+      for (const folderRef of list.prefixes) {
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
-          // console.log("init url:", url);
           if (url.includes("clue")) {
             tempClue.push(url);
             // console.log("this is clue url.", tempClue);
@@ -117,9 +116,10 @@ const Story = (props) => {
             ]);
           }
         });
-      });
+      }
+
       //처음 디렉토리 안의 아이템 나열
-      list.items.forEach(async (item) => {
+      for (const item of list.items) {
         const url = await getDownloadURL(item);
         const voice = document.createElement("audio");
         voice.src = url;
@@ -132,13 +132,13 @@ const Story = (props) => {
           setPendingVoice((cnt) => cnt - 1);
           // console.log(pendingVoice);
         };
-      });
+      }
 
       //sort arrays
       tempClue.sort();
       tempConclusion.sort();
-      // console.log("tempClue:", tempClue);
-      // console.log("tempConclusion:", tempConclusion);
+      console.log("tempClue:", tempClue);
+      console.log("tempConclusion:", tempConclusion);
       for (let i = 0; i < tempClue.length; i++) {
         if (ttclue.includes(tempClue[i])) {
           ttclue.push(tempClue[i]);
