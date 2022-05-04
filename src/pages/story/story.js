@@ -106,7 +106,6 @@ const Story = (props) => {
           const url = await getDownloadURL(item);
           if (url.includes("clue")) {
             tempClue.push(url);
-            // console.log("this is clue url.", tempClue);
             setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
             tempConclusion.push(url);
@@ -130,7 +129,6 @@ const Story = (props) => {
         }
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          // console.log(pendingVoice);
         };
       }
 
@@ -149,12 +147,6 @@ const Story = (props) => {
           ttconclusion.push(tempClue[i]);
         }
       }
-      // console.log("before Sort clue:", ttclue);
-      // console.log("before Sort conclusion:", ttconclusion);
-      // ttclue.sort();
-      // ttconclusion.sort();
-      // console.log("after sort clue:", ttclue);
-      // console.log("after sort conclusion:", ttconclusion);
 
       //update clue
       ttclue.forEach((url) => {
@@ -163,7 +155,6 @@ const Story = (props) => {
         setClue((prevClue) => [...prevClue, voice]);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          console.log(pendingVoice);
         };
       });
       //update conclusion
@@ -173,7 +164,6 @@ const Story = (props) => {
         setConclusion((prevConclusion) => [...prevConclusion, voice]);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          // console.log(pendingVoice);
         };
       });
     } catch (e) {

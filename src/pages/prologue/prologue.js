@@ -61,14 +61,14 @@ const FadeInOut = (props) => {
       let list = await listAll(prologueRef);
       setPendingImages(list.items.length);
 
-      list.items.forEach(async (item) => {
+      for (const item of list.items) {
         const imageURL = await getDownloadURL(item);
         const image = document.createElement("img");
         image.src = imageURL;
         image.onload = () => {
           setPendingImages((cnt) => cnt - 1);
         };
-      });
+      }
     } catch (e) {
       console.log("error");
     }
