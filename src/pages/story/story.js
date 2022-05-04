@@ -62,7 +62,7 @@ const Story = (props) => {
       setPendingImages(list.items.length);
 
       list.items.sort();
-      list.items.forEach(async (item) => {
+      for (const item of list.items) {
         const imageURL = await getDownloadURL(item);
         if (
           imageURL.includes("background.png") ||
@@ -81,7 +81,7 @@ const Story = (props) => {
         image.onload = () => {
           setPendingImages((cnt) => cnt - 1);
         };
-      });
+      }
     } catch (e) {
       console.log("error");
     }
@@ -102,7 +102,7 @@ const Story = (props) => {
       for (const folderRef of list.prefixes) {
         let folder = await listAll(folderRef);
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
-        folder.items.forEach(async (item) => {
+        for (const item of folder.items) {
           const url = await getDownloadURL(item);
           if (url.includes("clue")) {
             tempClue.push(url);
@@ -115,7 +115,7 @@ const Story = (props) => {
               false,
             ]);
           }
-        });
+        }
       }
 
       //처음 디렉토리 안의 아이템 나열
@@ -130,15 +130,12 @@ const Story = (props) => {
         }
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          // console.log(pendingVoice);
         };
       }
 
       //sort arrays
       tempClue.sort();
       tempConclusion.sort();
-      console.log("tempClue:", tempClue);
-      console.log("tempConclusion:", tempConclusion);
       for (let i = 0; i < tempClue.length; i++) {
         if (ttclue.includes(tempClue[i])) {
           ttclue.push(tempClue[i]);
@@ -149,13 +146,8 @@ const Story = (props) => {
           ttconclusion.push(tempClue[i]);
         }
       }
-      // console.log("before Sort clue:", ttclue);
-      // console.log("before Sort conclusion:", ttconclusion);
-      // ttclue.sort();
-      // ttconclusion.sort();
-      // console.log("after sort clue:", ttclue);
-      // console.log("after sort conclusion:", ttconclusion);
-
+      ttclue.sort();
+      ttconclusion.sort();
       //update clue
       ttclue.forEach((url) => {
         const voice = document.createElement("audio");
@@ -163,7 +155,6 @@ const Story = (props) => {
         setClue((prevClue) => [...prevClue, voice]);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          console.log(pendingVoice);
         };
       });
       //update conclusion
@@ -173,7 +164,6 @@ const Story = (props) => {
         setConclusion((prevConclusion) => [...prevConclusion, voice]);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          // console.log(pendingVoice);
         };
       });
     } catch (e) {
@@ -398,8 +388,8 @@ const Story = (props) => {
   if (sample[params.day - 1]) {
     return (
       <div>
-        {!(isImageLoaded /*&& isVoiceLoaded*/) && <div>Loading</div>}
-        {isImageLoaded /*&& isVoiceLoaded*/ && (
+        {!(isImageLoaded && isVoiceLoaded) && <div>Loading</div>}
+        {isImageLoaded && isVoiceLoaded && (
           <div>
             <Day func={scrollToBriefing} day={params.day} start={start} />
             <Element name="Briefing">
