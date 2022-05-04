@@ -8,6 +8,7 @@
 }
 
 .Ai {
+  display: block;
   width: 20vh;
   height: 20vh;
   margin-left: auto;
