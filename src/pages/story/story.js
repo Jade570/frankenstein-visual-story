@@ -29,7 +29,7 @@ const Story = (props) => {
   const voiceRef = ref(props.storage, voicePath);
   const [pendingVoice, setPendingVoice] = useState(-1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [isVoiceLoaded, setIsVoiceLoaded] = useState(false);
+  const [isVoiceLoaded, setIsVoiceLoaded] = useState(true);
 
   //image lists
   const [background, setBackground] = useState("");
@@ -197,7 +197,7 @@ const Story = (props) => {
       setSuggestion1(tempsuggestion1);
       setSuggestion2(tempsuggestion2);
     }
-  }, [loadImages]);
+  }, [pendingImages]);
 
   //load Voice
   useEffect(() => {
@@ -234,6 +234,7 @@ const Story = (props) => {
   useEffect(() => {
     if (isVoiceLoaded) {
       cluePlaying.forEach((item, idx) => {
+        return;
         if (item) clue[idx].play();
         else {
           clue[idx].pause();
@@ -245,6 +246,7 @@ const Story = (props) => {
 
   useEffect(() => {
     if (isVoiceLoaded) {
+      return;
       conclusionPlaying.forEach((item, idx) => {
         if (item) conclusion[idx].play();
         else {
@@ -291,6 +293,7 @@ const Story = (props) => {
   };
 
   const playClue = (idx) => {
+    return [];
     setStartPlaying(false);
     setBriefPlaying(false);
     setCluePlaying((prevCluePlaying) => {
@@ -311,6 +314,7 @@ const Story = (props) => {
   };
 
   const playConclusion = (idx) => {
+    return [];
     setStartPlaying(false);
     setBriefPlaying(false);
     setCluePlaying((prevCluePlaying) => {
