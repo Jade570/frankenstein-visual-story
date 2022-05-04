@@ -267,6 +267,7 @@
 				"suggestion1":[{"column":"2/10", "row":"16/28"},
 							{"column":"1/1", "row":"1/1"}],
 				"suggestion2":[{"column":"5/7", "row":"10/12"},
+							{"column":"1/1", "row":"1/1"},
 							{"column":"4/8", "row":"20/24"}]
 			},
             "accuracy":[[70,68,31],[76,66,35]],
