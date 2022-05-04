@@ -7,11 +7,11 @@ const Result = (props) => {
   const buttonFunc = () => {
     if (props.day < 4) {
       const nextPage = ["/day/", parseInt(props.day) + 1].join("");
-      navigate(nextPage);
+      navigate(nextPage, { replace: true });
     } else if (props.day === 4) {
-      navigate("/ending");
+      navigate("/ending", { replace: true });
     } else if (props.day === 5) {
-      navigate("/true-ending");
+      navigate("/true-ending", { replace: true });
     }
   };
 

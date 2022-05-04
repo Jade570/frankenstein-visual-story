@@ -104,10 +104,10 @@ const Story = (props) => {
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         folder.items.forEach(async (item) => {
           const url = await getDownloadURL(item);
-          console.log("init url:", url);
+          // console.log("init url:", url);
           if (url.includes("clue")) {
             tempClue.push(url);
-            console.log("this is clue url.", tempClue);
+            // console.log("this is clue url.", tempClue);
             setCluePlaying((cluePlaying) => [...cluePlaying, false]);
           } else if (url.includes("conclusion")) {
             tempConclusion.push(url);
@@ -130,15 +130,15 @@ const Story = (props) => {
         }
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          console.log(pendingVoice);
+          // console.log(pendingVoice);
         };
       });
 
       //sort arrays
       tempClue.sort();
       tempConclusion.sort();
-      console.log("tempClue:", tempClue);
-      console.log("tempConclusion:", tempConclusion);
+      // console.log("tempClue:", tempClue);
+      // console.log("tempConclusion:", tempConclusion);
       for (let i = 0; i < tempClue.length; i++) {
         if (ttclue.includes(tempClue[i])) {
           ttclue.push(tempClue[i]);
@@ -149,12 +149,12 @@ const Story = (props) => {
           ttconclusion.push(tempClue[i]);
         }
       }
-      console.log("before Sort clue:", ttclue);
-      console.log("before Sort conclusion:", ttconclusion);
-      ttclue.sort();
-      ttconclusion.sort();
-      console.log("after sort clue:", ttclue);
-      console.log("after sort conclusion:", ttconclusion);
+      // console.log("before Sort clue:", ttclue);
+      // console.log("before Sort conclusion:", ttconclusion);
+      // ttclue.sort();
+      // ttconclusion.sort();
+      // console.log("after sort clue:", ttclue);
+      // console.log("after sort conclusion:", ttconclusion);
 
       //update clue
       ttclue.forEach((url) => {
@@ -173,7 +173,7 @@ const Story = (props) => {
         setConclusion((prevConclusion) => [...prevConclusion, voice]);
         voice.onloadstart = () => {
           setPendingVoice((cnt) => cnt - 1);
-          console.log(pendingVoice);
+          // console.log(pendingVoice);
         };
       });
     } catch (e) {
