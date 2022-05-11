@@ -44,10 +44,8 @@ const Story = (props) => {
   const [conclusion, setConclusion] = useState([]);
 
   //bgm
-  const [bgm, setBgm] = useState(
-    new Audio(
-      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fmainbgm.mp3?alt=media&token=507de88e-9db9-4180-aecd-dc8530272028"
-    )
+  const bgm = new Audio(
+    "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fmainbgm.mp3?alt=media&token=507de88e-9db9-4180-aecd-dc8530272028"
   );
 
   //clue state
@@ -192,6 +190,12 @@ const Story = (props) => {
       playClue(clueState);
     }
   }, [clueState]);
+
+  useEffect(() => {
+    if (conclusionState > -1) {
+      playConclusion(conclusionState);
+    }
+  }, [conclusionState]);
 
   //control audio play by useEffect
   useEffect(() => {
