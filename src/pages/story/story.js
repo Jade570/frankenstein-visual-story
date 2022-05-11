@@ -172,7 +172,6 @@ const Story = (props) => {
   //load Voice
   useEffect(() => {
     if (pendingVoice === 0) {
-      setIsVoiceLoaded(true);
       let tempClue = clue.filter((c, idx) => {
         return clue.indexOf(c.src) === idx;
       });
@@ -181,12 +180,10 @@ const Story = (props) => {
       });
       setClue(tempClue);
       setConclusion(tempConclusion);
-      for (let i = 0; i < clue.length; i++) {
-        // setCluePlaying((prevCluePlaying) => [...prevCluePlaying, 1]);
-        // console.log("clue");
-      }
-      // console.log(clue);
-      // console.log(cluePlaying);
+      console.log(clue);
+      setCluePlaying(new Array(clue.length).fill(false));
+      setConclusionPlaying(new Array(conclusion.length).fill(false));
+      setIsVoiceLoaded(true);
     }
   }, [pendingVoice]);
 
@@ -216,22 +213,23 @@ const Story = (props) => {
   }, [briefPlaying]);
 
   useEffect(() => {
-    if (isVoiceLoaded) {
+    if (showBriefing) {
+      console.log(clue);
       cluePlaying.forEach((item, idx) => {
-        return;
-        if (item) clue[idx].play();
-        else {
-          clue[idx].pause();
-          clue[idx].currentTime = 0;
-        }
+        console.log(item);
+        if (clue[idx]) console.log(idx, clue[idx]);
+        // if (item) clue[idx].play();
+        // else {
+        //   clue[idx].pause();
+        //   clue[idx].currentTime = 0;
+        // }
       });
     }
   }, [cluePlaying]);
 
   useEffect(() => {
-    if (isVoiceLoaded) {
+    if (showBriefing) {
       conclusionPlaying.forEach((item, idx) => {
-        return;
         if (item) conclusion[idx].play();
         else {
           conclusion[idx].pause();
@@ -338,6 +336,8 @@ const Story = (props) => {
   //scroll functions
   const scrollToBriefing = () => {
     setShowBriefing(true);
+    console.log(clue);
+    console.log(cluePlaying);
     bgm.volume = 0.5;
     bgm.play();
     bgm.loop = true;
