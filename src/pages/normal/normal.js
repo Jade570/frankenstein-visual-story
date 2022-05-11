@@ -9,6 +9,7 @@ const Normal = (props) => {
 
   return (
     <div className="Result">
+      <img src="https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"></img>
       <p>
         After investigating four cases, it turned out that every case was
         associated with the livestock organization. Each case looked quite
