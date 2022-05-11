@@ -29,7 +29,7 @@ const Story = (props) => {
   const voiceRef = ref(props.storage, voicePath);
   const [pendingVoice, setPendingVoice] = useState(-1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [isVoiceLoaded, setIsVoiceLoaded] = useState(true);
+  const [isVoiceLoaded, setIsVoiceLoaded] = useState(false);
 
   //image lists
   const [background, setBackground] = useState("");
@@ -92,11 +92,9 @@ const Story = (props) => {
     try {
       // 처음 디렉토리 안의 아이템 나열
       let list = await listAll(voiceRef);
+
       setPendingVoice(list.items.length);
-      let tempClue = [];
-      let tempConclusion = [];
-      let ttclue = [];
-      let ttconclusion = [];
+      // console.log("처음 디렉토리 voice 개수:", pendingVoice);
 
       // 세부 디렉토리 안의 아이템 나열
       for (const folderRef of list.prefixes) {
@@ -104,17 +102,16 @@ const Story = (props) => {
         setPendingVoice((pendingVoice) => pendingVoice + folder.items.length);
         for (const item of folder.items) {
           const url = await getDownloadURL(item);
-          if (url.includes("clue")) {
-            tempClue.push(url);
-            // console.log("this is clue url.", tempClue);
-            setCluePlaying((cluePlaying) => [...cluePlaying, false]);
-          } else if (url.includes("conclusion")) {
-            tempConclusion.push(url);
-            setConclusionPlaying((conclusionPlaying) => [
-              ...conclusionPlaying,
-              false,
-            ]);
+          const voice = document.createElement("audio");
+          voice.src = url;
+          if (folderRef._location.path_.endsWith("clue")) {
+            setClue((prevClue) => [...prevClue, voice]);
+          } else {
+            setConclusion((prevConclusion) => [...prevConclusion, voice]);
           }
+          voice.onloadstart = () => {
+            setPendingVoice((cnt) => cnt - 1);
+          };
         }
       }
 
@@ -132,40 +129,6 @@ const Story = (props) => {
           setPendingVoice((cnt) => cnt - 1);
         };
       }
-
-      //sort arrays
-      tempClue.sort();
-      tempConclusion.sort();
-      for (let i = 0; i < tempClue.length; i++) {
-        if (ttclue.includes(tempClue[i])) {
-          ttclue.push(tempClue[i]);
-        }
-      }
-      for (let i = 0; i < tempConclusion.length; i++) {
-        if (ttconclusion.includes(tempConclusion[i])) {
-          ttconclusion.push(tempClue[i]);
-        }
-      }
-      ttclue.sort();
-      ttconclusion.sort();
-      //update clue
-      ttclue.forEach((url) => {
-        const voice = document.createElement("audio");
-        voice.src = url;
-        setClue((prevClue) => [...prevClue, voice]);
-        voice.onloadstart = () => {
-          setPendingVoice((cnt) => cnt - 1);
-        };
-      });
-      //update conclusion
-      ttconclusion.forEach((url) => {
-        const voice = document.createElement("audio");
-        voice.src = url;
-        setConclusion((prevConclusion) => [...prevConclusion, voice]);
-        voice.onloadstart = () => {
-          setPendingVoice((cnt) => cnt - 1);
-        };
-      });
     } catch (e) {
       console.log("error");
     }
@@ -203,6 +166,20 @@ const Story = (props) => {
   useEffect(() => {
     if (pendingVoice === 0) {
       setIsVoiceLoaded(true);
+      let tempClue = clue.filter((c, idx) => {
+        return clue.indexOf(c.src) === idx;
+      });
+      let tempConclusion = conclusion.filter((c, idx) => {
+        return conclusion.indexOf(c.src) === idx;
+      });
+      setClue(tempClue);
+      setConclusion(tempConclusion);
+      for (let i = 0; i < clue.length; i++) {
+        setCluePlaying((prevCluePlaying) => [...prevCluePlaying, 1]);
+        console.log("clue");
+      }
+      console.log(clue);
+      console.log(cluePlaying);
     }
   }, [pendingVoice]);
 
@@ -234,7 +211,6 @@ const Story = (props) => {
   useEffect(() => {
     if (isVoiceLoaded) {
       cluePlaying.forEach((item, idx) => {
-        return;
         if (item) clue[idx].play();
         else {
           clue[idx].pause();
@@ -246,7 +222,6 @@ const Story = (props) => {
 
   useEffect(() => {
     if (isVoiceLoaded) {
-      return;
       conclusionPlaying.forEach((item, idx) => {
         if (item) conclusion[idx].play();
         else {
@@ -293,7 +268,7 @@ const Story = (props) => {
   };
 
   const playClue = (idx) => {
-    return [];
+    // return [];
     setStartPlaying(false);
     setBriefPlaying(false);
     setCluePlaying((prevCluePlaying) => {
@@ -314,7 +289,7 @@ const Story = (props) => {
   };
 
   const playConclusion = (idx) => {
-    return [];
+    // return [];
     setStartPlaying(false);
     setBriefPlaying(false);
     setCluePlaying((prevCluePlaying) => {
