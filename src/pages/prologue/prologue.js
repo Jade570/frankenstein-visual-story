@@ -203,17 +203,14 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[1].loop = false;
-                bgm[1].addEventListener("ended", () => {
-                  bgm[1].pause();
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[2] = true;
-                    return [...prevPlaying];
+                bgm[1].pause();
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[2] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -239,19 +236,15 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
-                bgm[2].loop = false;
-                bgm[2].addEventListener("ended", () => {
-                  bgm[2].pause();
-                  bgm[3].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[3] = true;
-                    return [...prevPlaying];
+                bgm[2].pause();
+                bgm[3].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[3] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -277,20 +270,6 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
-                bgm[3].loop = false;
-                bgm[3].addEventListener("ended", () => {
-                  bgm[3].pause();
-                  bgm[4].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[4] = true;
-                    return [...prevPlaying];
-                  });
-                  console.log(bgmIsPlaying);
-                });
               }}
             >
               <div className="image-container">
@@ -318,20 +297,18 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
-                bgm[4].loop = false;
-                bgm[4].addEventListener("ended", () => {
-                  bgm[4].pause();
-                  bgm[5].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[5] = true;
-                    return [...prevPlaying];
+                bgm[3].loop = false;
+                bgm[3].pause();
+                bgm[5].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[5] = true;
+                  return [...prevPlaying];
                 });
+                console.log(bgmIsPlaying);
               }}
             >
               <div className="image-container">
