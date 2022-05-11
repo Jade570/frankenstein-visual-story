@@ -43,6 +43,13 @@ const Story = (props) => {
   const [clue, setClue] = useState([]);
   const [conclusion, setConclusion] = useState([]);
 
+  //bgm
+  const [bgm, setBgm] = useState(
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fmainbgm.mp3?alt=media&token=507de88e-9db9-4180-aecd-dc8530272028"
+    )
+  );
+
   //clue state
   const [clueState, setClueState] = useState(-1);
 
@@ -175,11 +182,11 @@ const Story = (props) => {
       setClue(tempClue);
       setConclusion(tempConclusion);
       for (let i = 0; i < clue.length; i++) {
-        setCluePlaying((prevCluePlaying) => [...prevCluePlaying, 1]);
-        console.log("clue");
+        // setCluePlaying((prevCluePlaying) => [...prevCluePlaying, 1]);
+        // console.log("clue");
       }
-      console.log(clue);
-      console.log(cluePlaying);
+      // console.log(clue);
+      // console.log(cluePlaying);
     }
   }, [pendingVoice]);
 
@@ -211,6 +218,7 @@ const Story = (props) => {
   useEffect(() => {
     if (isVoiceLoaded) {
       cluePlaying.forEach((item, idx) => {
+        return;
         if (item) clue[idx].play();
         else {
           clue[idx].pause();
@@ -223,6 +231,7 @@ const Story = (props) => {
   useEffect(() => {
     if (isVoiceLoaded) {
       conclusionPlaying.forEach((item, idx) => {
+        return;
         if (item) conclusion[idx].play();
         else {
           conclusion[idx].pause();
@@ -329,6 +338,9 @@ const Story = (props) => {
   //scroll functions
   const scrollToBriefing = () => {
     setShowBriefing(true);
+    bgm.volume = 0.5;
+    bgm.play();
+    bgm.loop = true;
     playStart();
     Scroll.scroller.scrollTo("Briefing", {
       duration: 800,
@@ -339,6 +351,7 @@ const Story = (props) => {
 
   const scrollToInvestigation = () => {
     setShowInvestigation(true);
+
     Scroll.scroller.scrollTo("Investigation", {
       duration: 800,
       delay: 50,
