@@ -56,6 +56,56 @@ const FadeInOut = (props) => {
 
   const prologueRef = ref(props.storage, "image/opening sequence");
   const [pendingImages, setPendingImages] = useState(-1);
+
+  const [bgm, setBgm] = useState([
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F01.mp3?alt=media&token=5250f7d0-c615-412a-80a6-e2db09a6fdbf"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F02.mp3?alt=media&token=e3a4faea-ef93-43ea-873d-321eb042a4f3"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F03.mp3?alt=media&token=55b077cb-acd8-4ab2-b496-1568f0637f1b"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F04.mp3?alt=media&token=f026f342-d8cc-4998-82e7-9f70db1b0dfa"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F05.mp3?alt=media&token=2c27aade-9ea8-47c4-b92c-af7a1f2a411c"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F06.mp3?alt=media&token=9f2c9e69-f298-4856-a3ff-41fdcd70fc05"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F07.mp3?alt=media&token=7f516b06-06af-4100-8eb0-3bfac4fa7200"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F08.mp3?alt=media&token=6b464724-7f4b-4e72-a24b-e7fe83bd7d57"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F09.mp3?alt=media&token=049bf250-a4b7-4674-ba03-e179631795eb"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F10.mp3?alt=media&token=5682abea-ea1e-4782-930a-bb2101a2f9ae"
+    ),
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F11.mp3?alt=media&token=2f36d6de-5adf-4d28-bd90-191a1731c5c4"
+    ),
+  ]);
+  const [bgmIsPlaying, setBgmIsPlaying] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
   const loadImages = async () => {
     try {
       let list = await listAll(prologueRef);
@@ -74,6 +124,18 @@ const FadeInOut = (props) => {
     }
   };
 
+  const load0 = () => {
+    bgm[0].loop = true;
+    setBgmIsPlaying((prevPlaying) => {
+      prevPlaying.forEach((item, idx) => {
+        item = false;
+      });
+      prevPlaying[0] = true;
+      return [...prevPlaying];
+    });
+    console.log(bgmIsPlaying);
+  };
+
   useEffect(() => {
     loadImages();
   }, []);
@@ -83,6 +145,14 @@ const FadeInOut = (props) => {
       setIsLoaded(true);
     }
   }, [pendingImages]);
+
+  useEffect(() => {
+    bgmIsPlaying.forEach((item, idx) => {
+      if (item) bgm[idx].play();
+      else bgm[idx].pause();
+    });
+  }, [bgmIsPlaying]);
+
   return (
     <div>
       {!isLoaded && <div>Loading</div>}
@@ -94,10 +164,24 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[0].loop = false;
+                bgm[0].addEventListener("ended", () => {
+                  bgm[0].pause();
+                  bgm[1].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[1] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
-                <div className="0">
+                <div className="0" onLoad={load0}>
                   <img
                     src={
                       "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fopening%20sequence%2F1.gif?alt=media&token=512a088d-3450-4912-9d75-23145c0425bb"
@@ -118,6 +202,19 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[1].loop = false;
+                bgm[1].addEventListener("ended", () => {
+                  bgm[1].pause();
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[2] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -142,6 +239,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[2].loop = false;
+                bgm[2].addEventListener("ended", () => {
+                  bgm[2].pause();
+                  bgm[3].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[3] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -166,6 +277,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[3].loop = false;
+                bgm[3].addEventListener("ended", () => {
+                  bgm[3].pause();
+                  bgm[4].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[4] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -193,6 +318,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[4].loop = false;
+                bgm[4].addEventListener("ended", () => {
+                  bgm[4].pause();
+                  bgm[5].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[5] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -217,6 +356,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[5].loop = false;
+                bgm[5].addEventListener("ended", () => {
+                  bgm[5].pause();
+                  bgm[6].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[6] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -241,6 +394,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[6].loop = false;
+                bgm[6].addEventListener("ended", () => {
+                  bgm[6].pause();
+                  bgm[7].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[7] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -266,6 +433,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[7].loop = false;
+                bgm[7].addEventListener("ended", () => {
+                  bgm[7].pause();
+                  bgm[8].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[8] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -290,6 +471,20 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[8].loop = false;
+                bgm[8].addEventListener("ended", () => {
+                  bgm[8].pause();
+                  bgm[9].loop = true;
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[9] = true;
+                    return [...prevPlaying];
+                  });
+                  console.log(bgmIsPlaying);
+                });
               }}
             >
               <div className="image-container">
@@ -315,6 +510,18 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 slideRef.current.goNext();
+                bgm[9].loop = false;
+                bgm[9].addEventListener("ended", () => {
+                  bgm[9].pause();
+                  setBgmIsPlaying((prevPlaying) => {
+                    prevPlaying.forEach((item, idx) => {
+                      item = false;
+                      prevPlaying[idx] = false;
+                    });
+                    prevPlaying[10] = true;
+                    return [...prevPlaying];
+                  });
+                });
               }}
             >
               <div className="image-container">
