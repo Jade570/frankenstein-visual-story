@@ -172,14 +172,14 @@ const Story = (props) => {
   //load Voice
   useEffect(() => {
     if (pendingVoice === 0) {
-      let tempClue = clue.filter((c, idx) => {
-        return clue.indexOf(c.src) === idx;
-      });
-      let tempConclusion = conclusion.filter((c, idx) => {
-        return conclusion.indexOf(c.src) === idx;
-      });
-      setClue(tempClue);
-      setConclusion(tempConclusion);
+      // let tempClue = clue.filter((c, idx) => {
+      //   return clue.indexOf(c.src) === idx;
+      // });
+      // let tempConclusion = conclusion.filter((c, idx) => {
+      //   return conclusion.indexOf(c.src) === idx;
+      // });
+      // setClue(tempClue);
+      // setConclusion(tempConclusion);
       console.log(clue);
       setCluePlaying(new Array(clue.length).fill(false));
       setConclusionPlaying(new Array(conclusion.length).fill(false));
@@ -216,13 +216,11 @@ const Story = (props) => {
     if (showBriefing) {
       console.log(clue);
       cluePlaying.forEach((item, idx) => {
-        console.log(item);
-        if (clue[idx]) console.log(idx, clue[idx]);
-        // if (item) clue[idx].play();
-        // else {
-        //   clue[idx].pause();
-        //   clue[idx].currentTime = 0;
-        // }
+        if (item) clue[idx].play();
+        else {
+          clue[idx].pause();
+          clue[idx].currentTime = 0;
+        }
       });
     }
   }, [cluePlaying]);
@@ -415,6 +413,8 @@ const Story = (props) => {
                 showConclusion={showConclusion}
                 data={sample[params.day - 1].conclusion}
                 func={scrollToResult}
+                conclusionState={conclusionState}
+                setConclusionState={setConclusionState}
               ></Conclusion>
             </Element>
             <Element name="Result">

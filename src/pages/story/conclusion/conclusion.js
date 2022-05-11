@@ -49,6 +49,7 @@ const Conclusion = (props) => {
         setIsCurrentAi(true);
         setAiText(props.data[speechNum].text);
         setAiNum((num) => num + 1);
+        props.setConclusionState(aiNum);
         setAiImg(
           "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_talking(no_background).gif?alt=media&token=26c39abd-275e-40df-876c-cb0212d1f290"
         );
