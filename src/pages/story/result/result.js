@@ -9,10 +9,10 @@ const Result = (props) => {
       const nextPage = ["/day/", parseInt(props.day) + 1].join("");
       window.location.pathname = nextPage;
       // navigate(nextPage, { replace: true });
-    } else if (props.day === 4) {
+    } else if (parseInt(props.day) === 4) {
       window.location.pathname = "/ending";
       // navigate("/ending", { replace: true });
-    } else if (props.day === 5) {
+    } else if (parseInt(props.day) === 5) {
       window.location.pathname = "/true-ending";
       // navigate("/true-ending", { replace: true });
     }
