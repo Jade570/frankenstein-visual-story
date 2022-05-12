@@ -11,7 +11,10 @@ const Main = (props) => {
         navigate("/prologue");
       }}
     >
-      <img src="https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fintro_nobg.png?alt=media&token=e3359505-ee07-4786-99e5-576a6ddf4316"></img>
+      <img
+        style={{ objectFit: "contain", width: "80vw" }}
+        src="https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fintro_nobg.png?alt=media&token=e3359505-ee07-4786-99e5-576a6ddf4316"
+      ></img>
       <h2>click anywhere to start</h2>
     </div>
   );
