@@ -54,4 +54,5 @@
   display: inline;
   vertical-align: middle;
   margin: auto;
+  cursor: default;
 }
