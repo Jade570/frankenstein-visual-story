@@ -522,6 +522,7 @@ const FadeInOut = (props) => {
               className="each-fade"
               onClick={() => {
                 navigate("/day/1");
+                bgm[10].pause();
               }}
             >
               <div className="image-container">
