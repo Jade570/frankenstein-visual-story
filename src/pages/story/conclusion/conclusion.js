@@ -29,7 +29,7 @@ const currentText = {
 
 const Conclusion = (props) => {
   const [speechNum, setSpeechNum] = useState(0);
-  const [aiNum, setAiNum] = useState(-1);
+  const [aiSpeakingNum, setAiSpeakingNum] = useState(-1);
   const [AiText, setAiText] = useState("");
   const [Playertext, setPlayerText] = useState("");
   const [aiImg, setAiImg] = useState("");
@@ -46,15 +46,24 @@ const Conclusion = (props) => {
   useEffect(() => {
     if (speechNum > -1) {
       if (props.data[speechNum].speaker === "ai") {
-        setIsCurrentAi(true);
-        setAiText(props.data[speechNum].text);
-        setAiNum((num) => num + 1);
-        props.setConclusionState(aiNum + 1);
-        console.log(props.conclusionState);
-        setAiImg(
-          "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_talking(no_background).gif?alt=media&token=26c39abd-275e-40df-876c-cb0212d1f290"
-        );
+        if (props.data[speechNum].img === "thinking") {
+          setIsCurrentAi(true);
+          setAiText(props.data[speechNum].text);
+          setAiImg(
+            "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_thinking(no_bg).gif?alt=media&token=d7319ccf-e582-4275-b06c-19c0f6bfdac6"
+          );
+        } else {
+          //talking
+          setIsCurrentAi(true);
+          setAiText(props.data[speechNum].text);
+          setAiSpeakingNum((num) => num + 1);
+          props.setConclusionState(aiSpeakingNum + 1);
+          setAiImg(
+            "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_talking(no_background).gif?alt=media&token=26c39abd-275e-40df-876c-cb0212d1f290"
+          );
+        }
       } else {
+        //blinking
         setIsCurrentAi(false);
         setPlayerText(props.data[speechNum].text);
         setAiImg(
