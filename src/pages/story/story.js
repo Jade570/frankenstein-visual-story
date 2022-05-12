@@ -44,10 +44,11 @@ const Story = (props) => {
   const [conclusion, setConclusion] = useState([]);
 
   //bgm
-  const bgm = new Audio(
-    "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fmainbgm.mp3?alt=media&token=507de88e-9db9-4180-aecd-dc8530272028"
+  const [bgm, setBgm] = useState(
+    new Audio(
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fmainbgm.mp3?alt=media&token=507de88e-9db9-4180-aecd-dc8530272028"
+    )
   );
-
   //clue state
   const [clueState, setClueState] = useState(-1);
 
@@ -139,9 +140,17 @@ const Story = (props) => {
     }
   };
 
+  //starting
   useEffect(() => {
     loadImages();
     loadVoice();
+    if (parseInt(paramse.day) === 5) {
+      setBgm(
+        new Audio(
+          "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fday5.mp3?alt=media&token=74deaeda-9e3d-482a-b938-ae96b59d24da"
+        )
+      );
+    }
   }, []);
 
   //load Image
