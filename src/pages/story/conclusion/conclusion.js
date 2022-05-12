@@ -78,13 +78,13 @@ const Conclusion = (props) => {
       <div className="Conclusion" onClick={click}>
         <img className="Ai" src={aiImg}></img>
         <div className="AiText" style={isCurrentAi ? currentText : blockedText}>
-          {AiText}
+          <span>{AiText}</span>
         </div>
         <div
           className="PlayerText"
           style={!isCurrentAi ? currentText : blockedText}
         >
-          {Playertext}
+          <span>{Playertext}</span>
         </div>
       </div>
     );
