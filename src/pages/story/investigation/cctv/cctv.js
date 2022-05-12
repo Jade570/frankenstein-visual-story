@@ -20,6 +20,7 @@ const Cctv = (props) => {
         setMyAnswer={props.setMyAnswer}
         clueState={props.clueState}
         setClueState={props.setClueState}
+        day={props.day}
       />
       <ProgressBar
         frame={frame}

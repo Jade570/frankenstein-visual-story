@@ -178,7 +178,7 @@ const Story = (props) => {
       // });
       // setClue(tempClue);
       // setConclusion(tempConclusion);
-      console.log(clue);
+
       setCluePlaying(new Array(clue.length).fill(false));
       setConclusionPlaying(new Array(conclusion.length).fill(false));
       setIsVoiceLoaded(true);
@@ -218,7 +218,6 @@ const Story = (props) => {
 
   useEffect(() => {
     if (showBriefing) {
-      console.log(clue);
       cluePlaying.forEach((item, idx) => {
         if (item) clue[idx].play();
         else {
@@ -338,8 +337,6 @@ const Story = (props) => {
   //scroll functions
   const scrollToBriefing = () => {
     setShowBriefing(true);
-    console.log(clue);
-    console.log(cluePlaying);
     bgm.volume = 0.5;
     bgm.play();
     bgm.loop = true;

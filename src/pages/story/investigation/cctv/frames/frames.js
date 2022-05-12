@@ -22,6 +22,7 @@ const Frames = (props) => {
   const closeAll = () => {
     setSugg1(false);
     setSugg2(false);
+    props.setClueState(-1);
   };
 
   useEffect(() => {
@@ -36,50 +37,81 @@ const Frames = (props) => {
     }
   }, [sugg2]);
 
-  return (
-    <div>
-      <div className="container">
-        <img className="background" src={props.background}></img>
-        <img
-          className="objects"
-          src={object[props.frame]}
-          onClick={closeAll}
-        ></img>
-        <div
-          className="suggestion1"
-          onClick={handleSuggestion1}
-          style={{
-            gridColumn: props.grid1[props.frame].column,
-            gridRow: props.grid1[props.frame].row,
-          }}
-        ></div>
-        <div
-          className="suggestion2"
-          onClick={handleSuggestion2}
-          style={{
-            gridColumn: props.grid2[props.frame].column,
-            gridRow: props.grid2[props.frame].row,
-          }}
-        ></div>
+  if (parseInt(props.day.day) === 5) {
+    return (
+      <div>
+        <div className="container">
+          <img className="background" src={props.background}></img>
+          <img
+            className="objects"
+            src={object[props.frame]}
+            onClick={closeAll}
+          ></img>
+          <div
+            className="suggestion1"
+            onClick={handleSuggestion1}
+            style={{
+              gridColumn: props.grid1[props.frame].column,
+              gridRow: props.grid1[props.frame].row,
+            }}
+          ></div>
+        </div>
+        <MyModal
+          isOpen={sugg1}
+          suggestion={props.suggestion1}
+          myAnswer={props.myAnswer}
+          setMyAnswer={props.setMyAnswer}
+          number={parseInt(0)}
+          closeAll={closeAll}
+        />
       </div>
-      <MyModal
-        isOpen={sugg1}
-        suggestion={props.suggestion1}
-        myAnswer={props.myAnswer}
-        setMyAnswer={props.setMyAnswer}
-        number={parseInt(0)}
-        closeAll={closeAll}
-      />
-      <MyModal
-        isOpen={sugg2}
-        suggestion={props.suggestion2}
-        myAnswer={props.myAnswer}
-        setMyAnswer={props.setMyAnswer}
-        number={parseInt(1)}
-        closeAll={closeAll}
-      />
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div className="container">
+          <img className="background" src={props.background}></img>
+          <img
+            className="objects"
+            src={object[props.frame]}
+            onClick={closeAll}
+          ></img>
+          <div
+            className="suggestion1"
+            onClick={handleSuggestion1}
+            style={{
+              gridColumn: props.grid1[props.frame].column,
+              gridRow: props.grid1[props.frame].row,
+            }}
+          ></div>
+          <div
+            className="suggestion2"
+            onClick={handleSuggestion2}
+            style={{
+              gridColumn: props.grid2[props.frame].column,
+              gridRow: props.grid2[props.frame].row,
+            }}
+          ></div>
+        </div>
+        <MyModal
+          isOpen={sugg1}
+          suggestion={props.suggestion1}
+          myAnswer={props.myAnswer}
+          setMyAnswer={props.setMyAnswer}
+          number={parseInt(0)}
+          closeAll={closeAll}
+        />
+        <MyModal
+          isOpen={sugg2}
+          suggestion={props.suggestion2}
+          myAnswer={props.myAnswer}
+          setMyAnswer={props.setMyAnswer}
+          number={parseInt(1)}
+          closeAll={closeAll}
+        />
+      </div>
+    );
+  }
 };
 
 export default Frames;

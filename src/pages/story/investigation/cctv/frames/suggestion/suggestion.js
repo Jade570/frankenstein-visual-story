@@ -40,7 +40,7 @@ const MyModal = (props) => {
           <img
             src={props.suggestion[1]}
             style={{
-              border: "5px solid yellow",
+              border: "5px solid #dbb704",
               margin: "10px",
               width: "20%",
               cursor: "pointer",
@@ -50,7 +50,7 @@ const MyModal = (props) => {
           <img
             src={props.suggestion[2]}
             style={{
-              border: "5px solid red",
+              border: "5px solid #9c0909",
               margin: "10px",
               width: "20%",
               cursor: "pointer",
