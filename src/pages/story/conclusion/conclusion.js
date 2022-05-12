@@ -34,12 +34,21 @@ const Conclusion = (props) => {
   const [Playertext, setPlayerText] = useState("");
   const [aiImg, setAiImg] = useState("");
   const [isCurrentAi, setIsCurrentAi] = useState(false);
+  const thinking = new Audio(
+    "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/sfx%2Fthinking.mp3?alt=media&token=ab40022b-faa5-49df-abb8-a37848017b36"
+  );
 
   const click = () => {
-    if (speechNum >= props.data.length - 1) {
-      props.func();
+    if (
+      props.data[speechNum].speaker === "ai" &&
+      props.data[speechNum].img === "thinking"
+    ) {
     } else {
-      setSpeechNum((num) => num + 1);
+      if (speechNum >= props.data.length - 1) {
+        props.func();
+      } else {
+        setSpeechNum((num) => num + 1);
+      }
     }
   };
 
@@ -52,6 +61,14 @@ const Conclusion = (props) => {
           setAiImg(
             "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_thinking(no_bg).gif?alt=media&token=d7319ccf-e582-4275-b06c-19c0f6bfdac6"
           );
+          thinking.play();
+          thinking.addEventListener("ended", () => {
+            if (speechNum >= props.data.length - 1) {
+              props.func();
+            } else {
+              setSpeechNum((num) => num + 1);
+            }
+          });
         } else {
           //talking
           setIsCurrentAi(true);
