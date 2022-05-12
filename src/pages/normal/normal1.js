@@ -71,59 +71,11 @@ const Normal = (props) => {
       "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fnormal%2F04.mp3?alt=media&token=a4d45af8-7879-41a2-9df2-9077a5e5546e"
     ),
   ]);
-  const [bgmIsPlaying, setBgmIsPlaying] = useState([
-    false,
-    false,
-    false,
-    false,
-  ]);
-
-  const loadImages = async () => {
-    try {
-      let list = await listAll(prologueRef);
-      setPendingImages(list.items.length);
-
-      for (const item of list.items) {
-        const imageURL = await getDownloadURL(item);
-        const image = document.createElement("img");
-        image.src = imageURL;
-        image.onload = () => {
-          setPendingImages((cnt) => cnt - 1);
-        };
-      }
-    } catch (e) {
-      console.log("error");
-    }
-  };
 
   const load0 = () => {
     bgm[0].loop = true;
-    setBgmIsPlaying((prevPlaying) => {
-      prevPlaying.forEach((item, idx) => {
-        item = false;
-      });
-      prevPlaying[0] = true;
-      return [...prevPlaying];
-    });
-    console.log(bgmIsPlaying);
+    bgm[0].play();
   };
-
-  useEffect(() => {
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    if (pendingImages === 0) {
-      setIsLoaded(true);
-    }
-  }, [pendingImages]);
-
-  useEffect(() => {
-    bgmIsPlaying.forEach((item, idx) => {
-      if (item) bgm[idx].play();
-      else bgm[idx].pause();
-    });
-  }, [bgmIsPlaying]);
 
   return (
     <div>
@@ -140,15 +92,6 @@ const Normal = (props) => {
                 bgm[0].addEventListener("ended", () => {
                   bgm[0].pause();
                   bgm[1].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[1] = true;
-                    return [...prevPlaying];
-                  });
-                  console.log(bgmIsPlaying);
                 });
               }}
             >
@@ -156,15 +99,17 @@ const Normal = (props) => {
                 <div className="0" onLoad={load0}>
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fopening%20sequence%2F1.gif?alt=media&token=512a088d-3450-4912-9d75-23145c0425bb"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"
                     }
                     style={box}
                   ></img>
                   <div style={text}>
-                    Daffodils, magnolias, tulips, and daises - <br /> every
-                    flower from all seasons have bloomed simultaneously <br />{" "}
-                    without bees and butterflies. <br /> Lots of people were
-                    busy taking a shot of this beautiful scene in rapture.
+                    After investigating four cases, it turned out that every
+                    case was associated with the livestock organization. Each
+                    case looked quite simple, but the milk powder, hives,
+                    restaurant, and truck were all clues connected to the big
+                    illegal crime organization. Consequently, the organization
+                    and associated people received punishment by the law.
                   </div>
                 </div>
               </div>
@@ -175,14 +120,9 @@ const Normal = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[1].loop = false;
-                bgm[1].pause();
-                setBgmIsPlaying((prevPlaying) => {
-                  prevPlaying.forEach((item, idx) => {
-                    item = false;
-                    prevPlaying[idx] = false;
-                  });
-                  prevPlaying[2] = true;
-                  return [...prevPlaying];
+                bgm[1].addEventListener("ended", () => {
+                  bgm[1].pause();
+                  bgm[2].loop = true;
                 });
               }}
             >
@@ -207,16 +147,10 @@ const Normal = (props) => {
             <div
               className="each-fade"
               onClick={() => {
-                slideRef.current.goNext();
-                bgm[2].pause();
-                bgm[3].loop = true;
-                setBgmIsPlaying((prevPlaying) => {
-                  prevPlaying.forEach((item, idx) => {
-                    item = false;
-                    prevPlaying[idx] = false;
-                  });
-                  prevPlaying[3] = true;
-                  return [...prevPlaying];
+                bgm[2].loop = false;
+                bgm[2].addEventListener("ended", () => {
+                  bgm[2].pause();
+                  bgm[3].loop = true;
                 });
               }}
             >
