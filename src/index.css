@@ -12,6 +12,12 @@ body {
   overflow-x: hidden;
 }
 
+pre {
+  font-family: "Pretendard Std";
+  color: #d1d5f0;
+  line-height: 150%;
+}
+
 h1 {
   color: #f1f3ff;
 }
@@ -24,6 +30,7 @@ button {
   transition: 0.3s;
   cursor: pointer;
 }
+
 button:hover {
   opacity: 1;
   color: #f8f9ff;
