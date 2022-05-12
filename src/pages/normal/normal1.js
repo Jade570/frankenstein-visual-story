@@ -59,16 +59,16 @@ const Normal = (props) => {
 
   const [bgm, setBgm] = useState([
     new Audio(
-      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F01.mp3?alt=media&token=5250f7d0-c615-412a-80a6-e2db09a6fdbf"
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fnormal%2F01.mp3?alt=media&token=71703298-b048-4376-8c58-c392c2756971"
     ),
     new Audio(
-      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F02.mp3?alt=media&token=e3a4faea-ef93-43ea-873d-321eb042a4f3"
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fnormal%2F02.mp3?alt=media&token=4840e6bf-d0c0-4b1b-a5f5-a7c537a29b39"
     ),
     new Audio(
-      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F03.mp3?alt=media&token=55b077cb-acd8-4ab2-b496-1568f0637f1b"
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fnormal%2F03.mp3?alt=media&token=d222e0a5-e2d3-45de-808a-8725095a460c"
     ),
     new Audio(
-      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fprologue%2F04.mp3?alt=media&token=f026f342-d8cc-4998-82e7-9f70db1b0dfa"
+      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fnormal%2F04.mp3?alt=media&token=a4d45af8-7879-41a2-9df2-9077a5e5546e"
     ),
   ]);
   const [bgmIsPlaying, setBgmIsPlaying] = useState([
