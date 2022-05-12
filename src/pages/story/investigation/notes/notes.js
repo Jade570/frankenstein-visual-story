@@ -4,9 +4,8 @@ import "./notes.css";
 const App = (props) => {
   const [allowClick, setAllowClick] = useState(false);
   const [showError, setShowError] = useState(false);
-
-  let note1;
-  let note2;
+  const [note1, setNote1] = useState(null);
+  const [note2, setNote2] = useState(null);
 
   const click = () => {
     let AnswerCheck = new Array(props.answer.length).fill(false);
@@ -28,6 +27,8 @@ const App = (props) => {
       prevShowNote[0] = -1;
       return prevShowNote;
     });
+    setNote1(null);
+    setAllowClick(false);
   };
 
   const reset2 = () => {
@@ -35,7 +36,9 @@ const App = (props) => {
       prevShowNote[1] = -1;
       return prevShowNote;
     });
+    setNote2(null);
     console.log(props.myAnswer);
+    setAllowClick(false);
   };
 
   useEffect(() => {
@@ -45,15 +48,21 @@ const App = (props) => {
     };
 
     if (props.myAnswer[0] !== -1) {
-      note1 = props.notes[0][props.myAnswer[0] - 1];
+      setNote1(props.notes[0][props.myAnswer[0] - 1]);
     } else {
-      note1 = "";
+      setNote1(null);
+    }
+    if (props.myAnswer[1] !== -1 && props.myAnswer[1]) {
+      setNote2(props.notes[1][props.myAnswer[1] - 1]);
+    } else {
+      setNote2(null);
     }
 
     if (props.myAnswer.every(checkNull)) {
       setAllowClick(true);
+    } else {
+      setAllowClick(false);
     }
-    console.log(note1);
   }, [props.myAnswer]);
 
   return (
