@@ -310,13 +310,23 @@
 	"investigation":
 			{
 			"cctv":{
-				"frames":3
+				"frames":6
 				},
 			"notes":[["A person who dragged the victim = monkey",
 				 "A person who dragged the victim = white person with short hair", 
 				 "A person who dragged the victim = plastic bag"]],
+			"grid":{
+				"suggestion1":[{"column":"10/11", "row":"8/10"},
+					{"column":"9/11", "row":"6/9"},
+					{"column":"10/11", "row":"5/7"},
+					{"column":"10/12", "row":"5/7"},
+					{"column":"9/10", "row":"5/7"},
+					{"column":"1/1", "row":"1/1"}],
+					"suggestion2":[]
+				},
+				
 			"accuracy":[87,20,38],
-			"answer": []
+			"answer": [0]
 		},
 	"conclusion":[
 		{"speaker":"player",
