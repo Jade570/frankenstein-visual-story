@@ -1,0 +1,30 @@
+.Normal button {
+  font-family: "Chakra Petch", sans-serif;
+  background-color: #70b2e7;
+  color: #f8f9ff;
+  opacity: 0.8;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 10em;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-top: 3em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0%;
+}
+
+button:hover {
+  opacity: 1;
+  color: #f8f9ff;
+}
+
+button:active {
+  opacity: 1;
+  color: #f8f9ff;
+}

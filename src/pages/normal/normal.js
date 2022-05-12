@@ -3,6 +3,7 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+import "./normal.css";
 
 const box = {
   width: "100%",
@@ -56,6 +57,15 @@ const Normal = (props) => {
   const endingRef = ref(props.storage, "bgm/normal");
   const [pendingBgm, setPendingBgm] = useState(-1);
 
+  const [addButton, setAddButton] = useState(false);
+
+  const timeout = useRef(null);
+  const timeFunc = () => {
+    timeout.current = setTimeout(() => {
+      setAddButton(true);
+      console.log(addButton);
+    }, 5000);
+  };
   const loadBgm = async () => {
     try {
       let list = await listAll(endingRef);
@@ -105,11 +115,11 @@ const Normal = (props) => {
   };
 
   return (
-    <div>
+    <div className="Normal">
       {!isLoaded && <div>Loading</div>}
       <div style={isLoaded ? mask_hidden : mask_active}></div>
       {isLoaded && (
-        <div className="section1" style={{ cursor: "pointer" }}>
+        <div className="section1">
           <Fade ref={slideRef} duration={500} arrows={false} autoplay={false}>
             <div
               className="each-fade"
@@ -123,7 +133,7 @@ const Normal = (props) => {
                 });
               }}
             >
-              <div className="image-container">
+              <div className="image-container" style={{ cursor: "pointer" }}>
                 <div className="0" onLoad={load0}>
                   <img
                     src={
@@ -155,7 +165,7 @@ const Normal = (props) => {
                 });
               }}
             >
-              <div className="image-container">
+              <div className="image-container" style={{ cursor: "pointer" }}>
                 <div className="1">
                   <img
                     src={
@@ -185,7 +195,7 @@ const Normal = (props) => {
                 });
               }}
             >
-              <div className="image-container">
+              <div className="image-container" style={{ cursor: "pointer" }}>
                 <div className="2">
                   <img
                     src={
@@ -212,6 +222,7 @@ const Normal = (props) => {
                 bgm[3].addEventListener("ended", () => {
                   bgm[3].pause();
                 });
+                timeFunc();
               }}
             >
               <div className="image-container" style={{ cursor: "default" }}>
@@ -233,9 +244,21 @@ const Normal = (props) => {
               </div>
             </div>
           </Fade>
+          <div>
+            {addButton ? (
+              <button
+                onClick={() => {
+                  navigate("/day/5");
+                }}
+              >
+                continue
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       )}
-      ;
     </div>
   );
 };
