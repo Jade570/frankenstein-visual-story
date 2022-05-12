@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "./frames.css";
 import MyModal from "./suggestion/suggestion.js";
 
@@ -10,6 +10,17 @@ const Frames = (props) => {
 
   const [sugg1, setSugg1] = useState(false);
   const [sugg2, setSugg2] = useState(false);
+
+  const [showHidden, setShowHidden] = useState(false);
+  const timeout = useRef(null);
+
+  const handleDay5Suggestion = () => {
+    setSugg1(true);
+    setSugg2(false);
+    timeout.current = setTimeout(() => {
+      setShowHidden(true);
+    }, 16000);
+  };
 
   const handleSuggestion1 = () => {
     setSugg1(true);
@@ -49,7 +60,7 @@ const Frames = (props) => {
           ></img>
           <div
             className="suggestion1"
-            onClick={handleSuggestion1}
+            onClick={handleDay5Suggestion}
             style={{
               gridColumn: props.grid1[props.frame].column,
               gridRow: props.grid1[props.frame].row,
@@ -63,6 +74,8 @@ const Frames = (props) => {
           setMyAnswer={props.setMyAnswer}
           number={parseInt(0)}
           closeAll={closeAll}
+          func={props.func}
+          showHidden={showHidden}
         />
       </div>
     );

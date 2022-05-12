@@ -1,6 +1,22 @@
 import { React } from "react";
 import "./suggestion.css";
 
+const active = {
+  opacity: 1,
+  transition: "opacity 2500ms",
+  cursor: "pointer",
+  fontFamily: "Kalam",
+  color: "#aa0000",
+  paddingLeft: "3%",
+  paddingBottom: "3%",
+};
+
+const hidden = {
+  opacity: 0,
+  transition: "opacity 2500ms",
+  cursor: "default",
+};
+
 const MyModal = (props) => {
   const click1 = () => {
     props.closeAll();
@@ -57,6 +73,14 @@ const MyModal = (props) => {
             }}
             onClick={click3}
           ></img>
+          {
+            <div
+              style={props.showHidden ? active : hidden}
+              onClick={props.showHidden ? props.func : {}}
+            >
+              Why are you recommending me these..?
+            </div>
+          }
         </div>
       </div>
     );

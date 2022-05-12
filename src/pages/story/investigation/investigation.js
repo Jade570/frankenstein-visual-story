@@ -27,6 +27,7 @@ const Investigation = (props) => {
             setMyAnswer={setMyAnswer}
             clueState={props.clueState}
             setClueState={props.setClueState}
+            func={props.func}
           />
         </div>
 
