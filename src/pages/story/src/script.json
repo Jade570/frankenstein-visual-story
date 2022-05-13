@@ -55,7 +55,12 @@
     "conclusion": [
       {
         "speaker": "player",
-        "text": "We cannot be obvious of someone’s gender by their looks. That means, the suspect was actually a white man regardless of his long hair.",
+        "text": "We cannot be obvious of someone’s gender by their looks.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "That means, the suspect was actually a white man regardless of his long hair.",
         "img": "blinking"
       },
       {
@@ -75,7 +80,12 @@
       },
       {
         "speaker": "player",
-        "text": "I see, she is a transgender. Now let’s see why this man has beaten her. First, can you analyze who this man is?",
+        "text": "I see, she is a transgender. Now let’s see why this man has beaten her.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "First, can you analyze who this man is?",
         "img": "blinking"
       },
       { "speaker": "ai", "text": "Sure, investigator.", "img": "talking" },
@@ -87,7 +97,12 @@
       },
       {
         "speaker": "player",
-        "text": "Perhaps the victim and the suspect already knew each other. And what kind of hives are these on the victim’s hand?",
+        "text": "Perhaps the victim and the suspect already knew each other.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "And what kind of hives are these on the victim’s hand?",
         "img": "blinking"
       },
       {
@@ -219,7 +234,12 @@
       },
       {
         "speaker": "player",
-        "text": "Why would the employee just give a powder itself, not the cooked food for the homeless person? There must be some specific reason for that.",
+        "text": "Why would the employee just give a powder itself, not the cooked food for the homeless person?",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "There must be some specific reason for that.",
         "img": "blinking"
       },
       {
@@ -241,7 +261,12 @@
       },
       {
         "speaker": "player",
-        "text": "Hmm, so he took that to the rich people. That was why the powder itself was supplied. Maybe he is a delivery person.",
+        "text": "Hmm, so he took that to the rich people. That was why the powder itself was supplied.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "Maybe he is a delivery person.",
         "img": "blinking"
       },
       {
@@ -267,7 +292,12 @@
       },
       {
         "speaker": "player",
-        "text": "They are selling the animal milk through homeless people. Homeless people were not the main criminals.",
+        "text": "They are selling the animal milk through homeless people.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "Homeless people were not the main criminals.",
         "img": "blinking"
       }
     ],
@@ -381,7 +411,17 @@
       },
       {
         "speaker": "player",
-        "text": "Yes. He would see the scene of the owner moving animal meat from the truck. And that’s why he was killed. Because he witnessed their crime. So we need further investigation on that restaurant company and the truck.",
+        "text": "Yes. He would see the scene of the owner moving animal meat from the truck. And that’s why he was killed.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "Because he witnessed their crime.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "So we need further investigation on that restaurant company and the truck.",
         "img": "blinking"
       }
     ],
@@ -465,7 +505,12 @@
       },
       {
         "speaker": "player",
-        "text": "What? So they’re also producing milk from cows. This is a serious criminal organization associated with murder, assualt, animal exploitation, and environmental disruption.",
+        "text": "What? So they’re also producing milk from cows.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "This is a serious criminal organization associated with murder, assualt, animal exploitation, and environmental disruption.",
         "img": "blinking"
       }
     ],
@@ -513,7 +558,17 @@
     "conclusion": [
       {
         "speaker": "player",
-        "text": "This is obviously an asian man! We have gone through serious cases together, and you have done a great job. How could you suddenly just suggest a person as a monkey with racism?",
+        "text": "This is obviously an asian man!",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "We have gone through serious cases together, and you have done a great job.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "How could you suddenly just suggest a person as a monkey with racism?",
         "img": "blinking"
       },
       {
@@ -523,7 +578,12 @@
       },
       {
         "speaker": "player",
-        "text": "I told you that you cannot decide someone’s gender by a look before, and you learned it. Can’t you just adjust this like it?",
+        "text": "I told you that you cannot decide someone’s gender by a look before, and you learned it.",
+        "img": "blinking"
+      },
+      {
+        "speaker": "player",
+        "text": "Can’t you just adjust this like it?",
         "img": "blinking"
       },
       {
