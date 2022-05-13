@@ -147,7 +147,7 @@ const Story = (props) => {
     if (parseInt(params.day) === 5) {
       setBgm(
         new Audio(
-          "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fday5.mp3?alt=media&token=74deaeda-9e3d-482a-b938-ae96b59d24da"
+          "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/bgm%2Fstory%2Fday5.mp3?alt=media&token=c070cd78-0692-40e6-9282-3a06e0adf52d"
         )
       );
     }
