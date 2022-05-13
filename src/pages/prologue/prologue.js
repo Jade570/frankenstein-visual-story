@@ -165,18 +165,15 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[0].loop = false;
-                bgm[0].addEventListener("ended", () => {
-                  bgm[0].pause();
-                  bgm[1].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[1] = true;
-                    return [...prevPlaying];
+                bgm[0].pause();
+                bgm[1].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[1] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -334,18 +331,16 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[5].loop = false;
-                bgm[5].addEventListener("ended", () => {
-                  bgm[5].pause();
-                  bgm[6].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[6] = true;
-                    return [...prevPlaying];
+
+                bgm[5].pause();
+                bgm[6].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[6] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -372,18 +367,15 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[6].loop = false;
-                bgm[6].addEventListener("ended", () => {
-                  bgm[6].pause();
-                  bgm[7].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[7] = true;
-                    return [...prevPlaying];
+                bgm[6].pause();
+                bgm[7].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[7] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -411,18 +403,15 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[7].loop = false;
-                bgm[7].addEventListener("ended", () => {
-                  bgm[7].pause();
-                  bgm[8].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[8] = true;
-                    return [...prevPlaying];
+                bgm[7].pause();
+                bgm[8].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[8] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -449,18 +438,15 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[8].loop = false;
-                bgm[8].addEventListener("ended", () => {
-                  bgm[8].pause();
-                  bgm[9].loop = true;
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[9] = true;
-                    return [...prevPlaying];
+                bgm[8].pause();
+                bgm[9].loop = true;
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
-                  console.log(bgmIsPlaying);
+                  prevPlaying[9] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
@@ -488,16 +474,14 @@ const FadeInOut = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[9].loop = false;
-                bgm[9].addEventListener("ended", () => {
-                  bgm[9].pause();
-                  setBgmIsPlaying((prevPlaying) => {
-                    prevPlaying.forEach((item, idx) => {
-                      item = false;
-                      prevPlaying[idx] = false;
-                    });
-                    prevPlaying[10] = true;
-                    return [...prevPlaying];
+                bgm[9].pause();
+                setBgmIsPlaying((prevPlaying) => {
+                  prevPlaying.forEach((item, idx) => {
+                    item = false;
+                    prevPlaying[idx] = false;
                   });
+                  prevPlaying[10] = true;
+                  return [...prevPlaying];
                 });
               }}
             >
