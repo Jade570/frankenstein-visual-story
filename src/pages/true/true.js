@@ -13,6 +13,7 @@ const True = (props) => {
       <div>
         {" "}
         <video
+          controls
           style={{
             width: "100%",
             height: "auto",
