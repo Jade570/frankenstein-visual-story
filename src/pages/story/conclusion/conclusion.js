@@ -97,17 +97,19 @@ const Conclusion = (props) => {
     return (
       <div className="Conclusion" onClick={click}>
         <img className="Ai" src={aiImg}></img>
-        <div
-          className="AiText"
-          style={isCurrentAi && !isThinking ? currentText : blockedText}
-        >
-          <span>{AiText}</span>
-        </div>
-        <div
-          className="PlayerText"
-          style={!isCurrentAi ? currentText : blockedText}
-        >
-          <span>{Playertext}</span>
+        <div className="texts">
+          <div
+            className="AiText"
+            style={isCurrentAi && !isThinking ? currentText : blockedText}
+          >
+            <span>{AiText}</span>
+          </div>
+          <div
+            className="PlayerText"
+            style={!isCurrentAi ? currentText : blockedText}
+          >
+            <span>{Playertext}</span>
+          </div>
         </div>
       </div>
     );
