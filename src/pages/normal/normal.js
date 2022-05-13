@@ -205,7 +205,7 @@ const Normal = (props) => {
                 <div className="1">
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_2.GIF?alt=media&token=ef535899-8965-445c-a97d-212f59180033"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_2.GIF?alt=media&token=b3d76627-37b5-4fb4-96ea-b817af7b9f82"
                     }
                     style={box}
                   ></img>
@@ -235,7 +235,7 @@ const Normal = (props) => {
                 <div className="0" onLoad={load0}>
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_3.GIF?alt=media&token=435ed5a5-e400-4585-b9c9-b16733e30481"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_3.GIF?alt=media&token=297d49e5-aec7-445e-b788-931efacaf963"
                     }
                     style={box}
                   ></img>
@@ -256,7 +256,7 @@ const Normal = (props) => {
                 <div className="0" onLoad={load0}>
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_5.GIF?alt=media&token=5312404a-cb69-4cd5-b9af-e7b90dc153c0"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_4.GIF?alt=media&token=14b440dd-57da-44f1-857c-c868afa309ec"
                     }
                     style={box}
                   ></img>
