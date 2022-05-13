@@ -107,7 +107,12 @@
       },
       {
         "speaker": "ai",
-        "text": "I analyzed that this is an allergic reaction caused by animal protein. In this case, it seems like she took milk powder. It also seems like this allergic reaction made the victim indefensible for assault. She would have known about her allergic reaction.",
+        "text": "I analyzed that this is an allergic reaction caused by animal protein. In this case, it seems like she took milk powder.",
+        "img": "talking"
+      },
+      {
+        "speaker": "ai",
+        "text": "It also seems like this allergic reaction made the victim indefensible for assault. She would have known about her allergic reaction.",
         "img": "talking"
       },
       {
@@ -132,7 +137,12 @@
       },
       {
         "speaker": "ai",
-        "text": "As a result of interrogation, it was found out that he knew about her allergy and put some milk powder in her dish in advance to make her indefensible. He said he was upset because of his best friend coming out as a transgender woman, few days before the crime.",
+        "text": "As a result of interrogation, it was found out that he knew about her allergy and put some milk powder in her dish in advance to make her indefensible.",
+        "img": "talking"
+      },
+      {
+        "speaker": "ai",
+        "text": "He said he was upset because of his best friend coming out as a transgender woman, few days before the crime.",
         "img": "talking"
       },
       {
@@ -588,7 +598,22 @@
       },
       {
         "speaker": "ai",
-        "text": "Right, investigator. you told me that. So why can’t you adjust that this may be a monkey, and not decide this is a human? And why are you deciding that this is a “man”, conflicting with what you told me? Besides, I cannot specify “Asian” people. There is too little data for it. If you really think this is a human, I could only draw a montage of a white person from it.",
+        "text": "Right, investigator. you told me that. So why can’t you adjust that this may be a monkey, and not decide this is a human?",
+        "img": "talking"
+      },
+      {
+        "speaker": "ai",
+        "text": "And why are you deciding that this is a “man”, conflicting with what you told me?",
+        "img": "talking"
+      },
+      {
+        "speaker": "ai",
+        "text": "Besides, I cannot specify “Asian” people. There is too little data for it.",
+        "img": "talking"
+      },
+      {
+        "speaker": "ai",
+        "text": "If you really think this is a human, I could only draw a montage of a white person from it.",
         "img": "talking"
       },
       {
