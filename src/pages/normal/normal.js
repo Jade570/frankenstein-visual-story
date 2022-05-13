@@ -141,11 +141,9 @@ const Normal = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[0].loop = false;
-                bgm[0].addEventListener("ended", () => {
-                  bgm[0].pause();
-                  bgm[1].loop = true;
-                  bgm[1].play();
-                });
+                bgm[0].pause();
+                bgm[1].loop = true;
+                bgm[1].play();
               }}
             >
               <div className="image-container" style={{ cursor: "pointer" }}>
@@ -173,18 +171,16 @@ const Normal = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[1].loop = false;
-                bgm[1].addEventListener("ended", () => {
-                  bgm[1].pause();
-                  bgm[2].loop = true;
-                  bgm[2].play();
-                });
+                bgm[1].pause();
+                bgm[2].loop = true;
+                bgm[2].play();
               }}
             >
               <div className="image-container" style={{ cursor: "pointer" }}>
                 <div className="1">
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_2.GIF?alt=media&token=ef535899-8965-445c-a97d-212f59180033"
                     }
                     style={box}
                   ></img>
@@ -203,18 +199,18 @@ const Normal = (props) => {
               onClick={() => {
                 slideRef.current.goNext();
                 bgm[2].loop = false;
-                bgm[2].addEventListener("ended", () => {
-                  bgm[2].pause();
-                  bgm[3].loop = true;
-                  bgm[3].play();
+                bgm[2].pause();
+                bgm[3].play();
+                bgm[3].addEventListener("ended", () => {
+                  slideRef.current.goNext();
                 });
               }}
             >
               <div className="image-container" style={{ cursor: "pointer" }}>
-                <div className="2">
+                <div className="0" onLoad={load0}>
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_3.GIF?alt=media&token=435ed5a5-e400-4585-b9c9-b16733e30481"
                     }
                     style={box}
                   ></img>
@@ -230,18 +226,9 @@ const Normal = (props) => {
               </div>
             </div>
 
-            <div
-              className="each-fade"
-              onClick={() => {
-                bgm[3].loop = false;
-                bgm[3].addEventListener("ended", () => {
-                  bgm[3].pause();
-                });
-                timeFunc();
-              }}
-            >
+            <div className="each-fade">
               <div className="image-container" style={{ cursor: "default" }}>
-                <div className="3">
+                <div className="0" onLoad={load0}>
                   <img
                     src={
                       "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"
@@ -255,6 +242,19 @@ const Normal = (props) => {
                     by their appearance. Finally, it overcame its error
                     regarding detecting minorities.
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="each-fade" onClick={timeFunc}>
+              <div className="image-container" style={{ cursor: "pointer" }}>
+                <div className="0" onLoad={load0}>
+                  <img
+                    src={
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fend.gif?alt=media&token=b6ad645c-ce54-4fc2-875a-6bbc162078c4"
+                    }
+                    style={box}
+                  ></img>
                 </div>
               </div>
             </div>
