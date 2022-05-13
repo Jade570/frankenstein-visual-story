@@ -52,27 +52,27 @@ const Normal = (props) => {
   const navigate = useNavigate();
   const slideRef = useRef();
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isBgmLoaded, setIsBgmLoaded] = useState(false);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const endingRef = ref(props.storage, "bgm/normal");
+  const imgRef = ref(props.storage, "image/normal");
   const [pendingBgm, setPendingBgm] = useState(-1);
+  const [pendingImg, setPendingImg] = useState(-1);
 
   const [addButton, setAddButton] = useState(false);
 
-  const [itemLen, setItemLen] = useState(-1);
+  const [imgLen, setImgLen] = useState(-1);
+  const [bgmLen, setBgmLen] = useState(-1);
 
-  const timeout = useRef(null);
   const timeFunc = () => {
-    timeout.current = setTimeout(() => {
-      setAddButton(true);
-      console.log(addButton);
-    }, 5000);
+    setAddButton(true);
   };
   const loadBgm = async () => {
     try {
       let list = await listAll(endingRef);
       setPendingBgm(list.items.length);
-      setItemLen(list.items.length);
+      setBgmLen(list.items.length);
 
       for (const item of list.items) {
         const bgmURL = await getDownloadURL(item);
@@ -86,16 +86,40 @@ const Normal = (props) => {
       console.log("error");
     }
   };
+  const loadImg = async () => {
+    try {
+      let list = await listAll(imgRef);
+      setPendingImg(list.items.length);
+      setImgLen(list.items.length);
+
+      for (const item of list.items) {
+        const imgURL = await getDownloadURL(item);
+        const img = document.createElement("img");
+        img.src = imgURL;
+        img.onload = () => {
+          setPendingImg((cnt) => cnt - 1);
+        };
+      }
+    } catch (e) {
+      console.log("error");
+    }
+  };
 
   useEffect(() => {
     loadBgm();
+    loadImg();
   }, []);
 
   useEffect(() => {
     if (pendingBgm === 0) {
-      setIsLoaded(true);
+      setIsBgmLoaded(true);
     }
   }, [pendingBgm]);
+  useEffect(() => {
+    if (pendingImg === 0) {
+      setIsImgLoaded(true);
+    }
+  }, [pendingImg]);
 
   const [bgm, setBgm] = useState([
     new Audio(
@@ -119,21 +143,22 @@ const Normal = (props) => {
 
   return (
     <div className="Normal">
-      {!isLoaded && (
+      {!(isBgmLoaded && isImgLoaded) && (
         <div
           style={{
             marginLeft: "auto",
             marginRight: "auto",
-            paddingTop: "40vh",
             fontSize: "1.3em",
             textAlign: "center",
+            marginTop: "50%",
+            paddingBottom: "-50%",
           }}
         >
-          Loading {itemLen - pendingBgm} / {itemLen}
+          Loading {imgLen + bgmLen - pendingBgm - pendingImg} /{bgmLen + imgLen}
         </div>
       )}
-      <div style={isLoaded ? mask_hidden : mask_active}></div>
-      {isLoaded && (
+      <div style={isImgLoaded && isBgmLoaded ? mask_hidden : mask_active}></div>
+      {isBgmLoaded && isImgLoaded && (
         <div className="section1">
           <Fade ref={slideRef} duration={500} arrows={false} autoplay={false}>
             <div

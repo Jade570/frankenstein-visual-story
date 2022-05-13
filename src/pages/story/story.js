@@ -361,7 +361,7 @@ const Story = (props) => {
 
   const scrollToInvestigation = () => {
     setShowInvestigation(true);
-
+    stopAll();
     Scroll.scroller.scrollTo("Investigation", {
       duration: 800,
       delay: 50,
@@ -371,6 +371,7 @@ const Story = (props) => {
 
   const scrollToConclusion = () => {
     setShowConclusion(true);
+    stopAll();
     Scroll.scroller.scrollTo("Conclusion", {
       duration: 800,
       delay: 50,
@@ -380,6 +381,7 @@ const Story = (props) => {
 
   const scrollToResult = () => {
     setShowResult(true);
+    stopAll();
     Scroll.scroller.scrollTo("Result", {
       duration: 800,
       delay: 50,
@@ -430,6 +432,7 @@ const Story = (props) => {
                 start={start}
                 clueState={clueState}
                 setClueState={setClueState}
+                stopAll={stopAll}
               />
             </Element>
             <Element name="Conclusion">
@@ -439,6 +442,7 @@ const Story = (props) => {
                 func={scrollToResult}
                 conclusionState={conclusionState}
                 setConclusionState={setConclusionState}
+                stopAll={stopAll}
               ></Conclusion>
             </Element>
             <Element name="Result">
@@ -446,6 +450,8 @@ const Story = (props) => {
                 showResult={showResult}
                 data={sample[params.day - 1].final}
                 day={params.day}
+                bgm={bgm}
+                stopAll={stopAll}
               ></Result>
             </Element>
           </div>
