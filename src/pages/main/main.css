@@ -23,3 +23,33 @@
 .Main h2 {
   text-align: center;
 }
+
+@media screen and (min-width: 769px) {
+  .Main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .Main div {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Main img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 1080px;
+  }
+
+  .Main h2 {
+    text-align: center;
+  }
+}
