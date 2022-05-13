@@ -231,7 +231,7 @@ const Normal = (props) => {
                 <div className="0" onLoad={load0}>
                   <img
                     src={
-                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fending.png?alt=media&token=2baa0756-3a07-47c9-bb8a-9a8b25e7e755"
+                      "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fnormal%2Fnomal_4.GIF?alt=media&token=dd393aa3-a354-4263-8cec-5ca39867fc50"
                     }
                     style={box}
                   ></img>
