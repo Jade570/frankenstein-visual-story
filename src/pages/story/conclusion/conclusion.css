@@ -51,6 +51,14 @@
   align-items: center;
 }
 
+.texts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 .Conclusion span {
   display: inline;
   vertical-align: middle;
