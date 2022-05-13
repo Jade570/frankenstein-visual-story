@@ -3,7 +3,10 @@
   margin-right: auto;
   width: 100vw;
   height: 100vh;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .Main div {
