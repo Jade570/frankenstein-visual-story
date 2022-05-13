@@ -36,7 +36,7 @@ const Conclusion = (props) => {
   const [isCurrentAi, setIsCurrentAi] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const thinking = new Audio(
-    "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/sfx%2Fthinking.mp3?alt=media&token=b86393d8-be59-4a43-9c96-c2bf3c395914"
+    "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/sfx%2Fthinking.mp3?alt=media&token=a5e719ca-f34e-4a59-856e-9be4f938eb26"
   );
 
   const click = () => {
