@@ -157,7 +157,7 @@ const FadeInOut = (props) => {
 
   return (
     <div>
-      {!isLoaded && !itemLen === -1 && (
+      {!isLoaded && (
         <div
           style={{
             marginLeft: "auto",
