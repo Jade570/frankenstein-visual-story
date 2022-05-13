@@ -34,6 +34,7 @@ const Conclusion = (props) => {
   const [Playertext, setPlayerText] = useState("");
   const [aiImg, setAiImg] = useState("");
   const [isCurrentAi, setIsCurrentAi] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
   const thinking = new Audio(
     "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/sfx%2Fthinking.mp3?alt=media&token=b86393d8-be59-4a43-9c96-c2bf3c395914"
   );
@@ -55,9 +56,10 @@ const Conclusion = (props) => {
   useEffect(() => {
     if (speechNum > -1) {
       if (props.data[speechNum].speaker === "ai") {
+        setIsCurrentAi(true);
         if (props.data[speechNum].img === "thinking") {
-          setIsCurrentAi(true);
-          setAiText(props.data[speechNum].text);
+          setIsThinking(true);
+          setAiText(props.data[speechNum - 1].text);
           setAiImg(
             "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_thinking(no_bg).gif?alt=media&token=d7319ccf-e582-4275-b06c-19c0f6bfdac6"
           );
@@ -71,7 +73,7 @@ const Conclusion = (props) => {
           });
         } else {
           //talking
-          setIsCurrentAi(true);
+          setIsThinking(false);
           setAiText(props.data[speechNum].text);
           setAiSpeakingNum((num) => num + 1);
           props.setConclusionState(aiSpeakingNum + 1);
@@ -82,6 +84,7 @@ const Conclusion = (props) => {
       } else {
         //blinking
         setIsCurrentAi(false);
+        setIsThinking(false);
         setPlayerText(props.data[speechNum].text);
         setAiImg(
           "https://firebasestorage.googleapis.com/v0/b/frankenstein-visual-story.appspot.com/o/image%2Fai%2FAI_blinking(no_background).gif?alt=media&token=fffa9b18-3fd5-4a64-92af-cef43f3b5b40"
@@ -94,7 +97,10 @@ const Conclusion = (props) => {
     return (
       <div className="Conclusion" onClick={click}>
         <img className="Ai" src={aiImg}></img>
-        <div className="AiText" style={isCurrentAi ? currentText : blockedText}>
+        <div
+          className="AiText"
+          style={isCurrentAi && !isThinking ? currentText : blockedText}
+        >
           <span>{AiText}</span>
         </div>
         <div
