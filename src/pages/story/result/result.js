@@ -8,7 +8,6 @@ const Result = (props) => {
     if (props.day < 4) {
       const nextPage = ["/day/", parseInt(props.day) + 1].join("");
       window.location.pathname = nextPage;
-      // navigate(nextPage, { replace: true });
     } else if (parseInt(props.day) === 4) {
       window.location.pathname = "/ending";
       // navigate("/ending", { replace: true });

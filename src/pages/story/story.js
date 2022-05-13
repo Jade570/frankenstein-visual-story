@@ -61,12 +61,14 @@ const Story = (props) => {
   const [cluePlaying, setCluePlaying] = useState([]);
   const [conclusionPlaying, setConclusionPlaying] = useState([]);
 
+  const [itemLen, setItemLen] = useState(-1);
+
   //load image and save urls
   const loadImages = async () => {
     try {
       let list = await listAll(imgRef);
       setPendingImages(list.items.length);
-
+      setItemLen(list.items.length);
       list.items.sort();
       for (const item of list.items) {
         const imageURL = await getDownloadURL(item);
@@ -388,7 +390,19 @@ const Story = (props) => {
   if (sample[params.day - 1]) {
     return (
       <div>
-        {!(isImageLoaded && isVoiceLoaded) && <div>Loading</div>}
+        {!(isImageLoaded && isVoiceLoaded) && (
+          <div
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              paddingTop: "40vh",
+              fontSize: "1.3em",
+              textAlign: "center",
+            }}
+          >
+            Loading {itemLen - pendingImages} / {itemLen}
+          </div>
+        )}
         {isImageLoaded && isVoiceLoaded && (
           <div>
             <Day func={scrollToBriefing} day={params.day} start={start} />

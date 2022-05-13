@@ -53,6 +53,7 @@ const FadeInOut = (props) => {
   const slideRef = useRef();
 
   const [isLoaded, setIsLoaded] = useState(false);
+  const [itemLen, setItemLen] = useState(-1);
 
   const prologueRef = ref(props.storage, "image/opening sequence");
   const [pendingImages, setPendingImages] = useState(-1);
@@ -110,6 +111,7 @@ const FadeInOut = (props) => {
     try {
       let list = await listAll(prologueRef);
       setPendingImages(list.items.length);
+      setItemLen(list.items.length);
 
       for (const item of list.items) {
         const imageURL = await getDownloadURL(item);
@@ -155,7 +157,19 @@ const FadeInOut = (props) => {
 
   return (
     <div>
-      {!isLoaded && <div>Loading</div>}
+      {!isLoaded && !itemLen === -1 && (
+        <div
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingTop: "40vh",
+            fontSize: "1.3em",
+            textAlign: "center",
+          }}
+        >
+          Loading {itemLen - pendingImages} / {itemLen}
+        </div>
+      )}
       <div style={isLoaded ? mask_hidden : mask_active}></div>
       {isLoaded && (
         <div className="section1" style={{ cursor: "pointer" }}>

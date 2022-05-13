@@ -59,6 +59,8 @@ const Normal = (props) => {
 
   const [addButton, setAddButton] = useState(false);
 
+  const [itemLen, setItemLen] = useState(-1);
+
   const timeout = useRef(null);
   const timeFunc = () => {
     timeout.current = setTimeout(() => {
@@ -70,6 +72,7 @@ const Normal = (props) => {
     try {
       let list = await listAll(endingRef);
       setPendingBgm(list.items.length);
+      setItemLen(list.items.length);
 
       for (const item of list.items) {
         const bgmURL = await getDownloadURL(item);
@@ -116,7 +119,19 @@ const Normal = (props) => {
 
   return (
     <div className="Normal">
-      {!isLoaded && <div>Loading</div>}
+      {!isLoaded && (
+        <div
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingTop: "40vh",
+            fontSize: "1.3em",
+            textAlign: "center",
+          }}
+        >
+          Loading {itemLen - pendingBgm} / {itemLen}
+        </div>
+      )}
       <div style={isLoaded ? mask_hidden : mask_active}></div>
       {isLoaded && (
         <div className="section1">
